@@ -1,0 +1,18 @@
+
+.VerticalFormTablePanel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex-grow: 1;
+}
+
+.VerticalFormTablePanel-FormContainer {
+    display: flex;
+    justify-content: center;
+    min-height: 0;
+    margin-bottom: 25px;
+}
+
+.VerticalFormTablePanel-TableContainer {
+    flex-grow: 1;
+}

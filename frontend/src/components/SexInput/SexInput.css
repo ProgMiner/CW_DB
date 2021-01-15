@@ -1,0 +1,33 @@
+
+.SexInput {
+    display: flex;
+    min-height: 0;
+}
+
+.SexInput .SexInput-Button {
+    margin-right: 5px;
+    flex-grow: 1;
+
+    background: white;
+}
+
+.SexInput-Button:last-child {
+    margin: 0;
+}
+
+.SexInput .SexInput-Button.SexInput-Button_active {
+    background: var(--select-color);
+}
+
+.SexInput-Icon {
+    width: 20px;
+    height: 20px;
+}
+
+.SexInput-Icon_male {
+    background-image: url('./icons/male.svg');
+}
+
+.SexInput-Icon_female {
+    background-image: url('./icons/female.svg');
+}

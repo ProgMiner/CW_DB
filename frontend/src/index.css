@@ -1,4 +1,15 @@
 
+:root {
+    --bg-color: #FFD78A;
+    --fg-color: #FFCE20;
+    --active-color: #FCC502;
+    --select-color: #F6BB42;
+}
+
 body {
     margin: 0;
+}
+
+* {
+    box-sizing: border-box;
 }

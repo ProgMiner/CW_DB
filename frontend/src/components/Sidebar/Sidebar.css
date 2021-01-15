@@ -1,0 +1,35 @@
+
+.Sidebar {
+    padding: 10px;
+    border-radius: 10px;
+
+    background: var(--fg-color);
+}
+
+.Sidebar-Link {
+    display: block;
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    border-radius: 8px;
+
+    background: var(--bg-color);
+}
+
+.Sidebar-Link:hover, .Sidebar-Link_active {
+    padding: 3px;
+    border: 2px solid black;
+}
+
+.Sidebar-Link_active {
+    background: var(--select-color);
+}
+
+.Sidebar-Link + .Sidebar-Link {
+    margin-top: 10px;
+}
+
+.Sidebar-Icon {
+    width: 100%;
+    height: 100%;
+}

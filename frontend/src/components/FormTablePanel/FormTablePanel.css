@@ -1,0 +1,19 @@
+
+.FormTablePanel {
+    display: flex;
+    min-height: 0;
+    flex-grow: 1;
+}
+
+.FormTablePanel-FormContainer {
+    display: flex;
+    align-items: center;
+    width: 285px;
+    min-width: 285px;
+    min-height: 0;
+    margin: 0 60px 0 25px;
+}
+
+.FormTablePanel-TableContainer {
+    flex-grow: 1;
+}
