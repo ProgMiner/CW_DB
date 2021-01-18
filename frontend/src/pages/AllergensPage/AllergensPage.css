@@ -1,0 +1,27 @@
+
+.AllergensPage-FormContainer {
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    padding-left: 30px;
+    justify-content: center;
+}
+
+
+.AllergensPage-Form {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.AllergensPage-Form > * {
+    width: 240px;
+}
+
+.AllergensPage-Form .AllergensPage-Input {
+    margin-right: 10px;
+}
+
+.AllergensPage-Table .p-column-title {
+    white-space: nowrap;
+}

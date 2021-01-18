@@ -1,0 +1,25 @@
+
+.ClientsPage-FormContainer {
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    padding-left: 30px;
+}
+
+
+.ClientsPage-Form {
+    display: flex;
+}
+
+.ClientsPage-Form > * {
+    width: 240px;
+}
+
+.ClientsPage-Form .ClientsPage-Input {
+    margin-right: 10px;
+
+}
+
+.ClientsPage-Table .p-column-title {
+    white-space: nowrap;
+}

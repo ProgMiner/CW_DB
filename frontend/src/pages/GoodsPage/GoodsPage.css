@@ -1,0 +1,32 @@
+
+.GoodsPage-FormContainer {
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    padding-left: 10px;
+}
+
+.GoodsPage-Form {
+    display: flex;
+}
+
+.GoodsPage-Form .GoodsPage-Input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.GoodsPage-Row{
+    display: flow-root;
+    width: 50%;
+    margin-right: 10px;
+}
+
+.GoodsPage-Row > * {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.GoodsPage-Table .p-column-title {
+    white-space: nowrap;
+}

@@ -1,0 +1,26 @@
+
+.FoodPage-FormContainer {
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    padding-left: 30px;
+}
+
+
+.FoodPage-Form {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.FoodPage-Form > * {
+    width: 240px;
+}
+
+.FoodPage-Form .FoodPage-Input {
+    margin-right: 10px;
+
+}
+
+.FoodPage-Table .p-column-title {
+    white-space: nowrap;
+}

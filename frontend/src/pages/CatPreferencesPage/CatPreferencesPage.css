@@ -1,0 +1,27 @@
+
+.CatPreferencesPage-FormContainer {
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    padding-left: 30px;
+    justify-content: center;
+}
+
+
+.CatPreferencesPage-Form {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.CatPreferencesPage-Form > * {
+    width: 240px;
+}
+
+.CatPreferencesPage-Form .CatPreferencesPage-Input {
+    margin-right: 10px;
+}
+
+.CatPreferencesPage-Table .p-column-title {
+    white-space: nowrap;
+}

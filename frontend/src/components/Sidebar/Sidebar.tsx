@@ -10,6 +10,7 @@ import clientsPageIcon from './icons/clientsPage.svg';
 import foodPageIcon from './icons/foodPage.svg';
 import allergensPageIcon from './icons/allergensPage.svg';
 import catPreferencesPageIcon from './icons/catPreferencesPage.svg';
+import goodsPageIcon from './icons/goodsPage.svg';
 
 
 const sidebarLinks = [
@@ -19,6 +20,7 @@ const sidebarLinks = [
     ['/food', foodPageIcon],
     ['/allergens', allergensPageIcon],
     ['/catPreferences', catPreferencesPageIcon],
+    ['/goods', goodsPageIcon]
 ];
 
 const cnSidebar = cn('Sidebar');
