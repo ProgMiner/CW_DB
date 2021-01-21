@@ -14,13 +14,13 @@ import goodsPageIcon from './icons/goodsPage.svg';
 
 
 const sidebarLinks = [
-    ['/cats', catsPageIcon],
-    ['/catBreeds', catBreedsIcon],
-    ['/clients', clientsPageIcon],
-    ['/food', foodPageIcon],
-    ['/allergens', allergensPageIcon],
-    ['/catPreferences', catPreferencesPageIcon],
-    ['/goods', goodsPageIcon]
+    ['/cats', catsPageIcon, 'Кошки'],
+    ['/catBreeds', catBreedsIcon, 'Породы'],
+    ['/clients', clientsPageIcon, 'Клиенты'],
+    ['/food', foodPageIcon, 'Еда'],
+    ['/allergens', allergensPageIcon, 'Аллергены'],
+    ['/catPreferences', catPreferencesPageIcon, 'Предпочтения'],
+    ['/goods', goodsPageIcon, 'Товары']
 ];
 
 const cnSidebar = cn('Sidebar');
@@ -30,9 +30,9 @@ export const Sidebar: React.FC = () => {
 
     return (
         <div className={cnSidebar()}>
-            {sidebarLinks.map(([link, icon]) => (
+            {sidebarLinks.map(([link, icon, title]) => (
                 <Link key={link} className={cnSidebar('Link', { active: link === location })} to={link}>
-                    <img className={cnSidebar('Icon')} src={icon} alt={link} />
+                    <img className={cnSidebar('Icon')} src={icon} alt={title} title={title} />
                 </Link>
             ))}
         </div>

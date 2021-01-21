@@ -11,15 +11,16 @@ import { useBreeds } from '../../hooks/useBreeds';
 import { SexInput } from '../../components/SexInput/SexInput';
 import { useClients } from '../../hooks/useClients';
 import { useCreateCat } from '../../hooks/useCreateCat';
+import { Sex } from '../../models/sex';
 
 
 const cnCatsPage = cn('CatsPage');
 
 export const CatForm: React.FC = () => {
-    const { breeds } = useBreeds();
+    const breeds = useBreeds();
     const breedsOptions = breeds?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
-    const { clients } = useClients();
+    const clients = useClients();
     const clientsOptions = clients?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
     const createCat = useCreateCat();
@@ -59,7 +60,7 @@ export const CatForm: React.FC = () => {
                         )}
                     </Field>
 
-                    <Field name="sex" initialValue={'MALE' as const}>
+                    <Field<Sex> name="sex" initialValue="M">
                         {({ input }) => (
                             <SexInput className={cnCatsPage('Input')}
                                       value={input.value} onChange={input.onChange} />

@@ -5,7 +5,7 @@ import './Panel.css';
 
 
 export interface PanelProps {
-    className?: string;
+    readonly className?: string;
 }
 
 const cnPanel = cn('Panel');

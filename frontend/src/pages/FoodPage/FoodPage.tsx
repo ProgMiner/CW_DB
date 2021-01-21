@@ -5,15 +5,15 @@ import { MainLayout } from '../../layouts/MainLayout/MainLayout';
 import { Page } from '../../components/Page';
 
 import './FoodPage.css';
-import {VerticalFormTablePanel} from "../../components/VerticalFormTablePanel/VerticalFormTablePanel";
-import {FoodForm} from "./FoodForm";
-import {FoodTable} from "./FoodTable";
+import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
+import { FoodForm } from './FoodForm';
+import { FoodTable } from './FoodTable';
 
 
 const cnFoodPage = cn('FoodPage');
 
 export const FoodPage: React.FC = () => (
-    <Page className={cnFoodPage()}>
+    <Page className={cnFoodPage()} title="Еда">
         <MainLayout className={cnFoodPage('Layout')}>
             <VerticalFormTablePanel
                 form={(
@@ -21,7 +21,7 @@ export const FoodPage: React.FC = () => (
                         <FoodForm />
                     </div>
                 )}
-                table={<FoodTable/>}
+                table={<FoodTable />}
             />
         </MainLayout>
     </Page>

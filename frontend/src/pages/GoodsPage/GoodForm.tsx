@@ -4,7 +4,7 @@ import { InputText } from 'primereact/inputtext';
 import { cn } from '@bem-react/classname';
 import { Button } from 'primereact/button';
 
-import {useCreateGood} from "../../hooks/useCreateGood";
+import { useCreateGood } from '../../hooks/useCreateGood';
 
 
 const cnGoodsPage = cn('GoodsPage');
@@ -26,32 +26,32 @@ export const GoodForm: React.FC = () => {
             {({ handleSubmit }) => (
                 <form className={cnGoodsPage('Form')} onSubmit={handleSubmit}>
                     <div className={cnGoodsPage('Row')}>
-                    <Field name="name">
-                        {({ input }) => (
-                            <InputText className={cnGoodsPage('Input')}
-                                       placeholder="Название" {...input} />
-                        )}
-                    </Field>
+                        <Field name="name">
+                            {({ input }) => (
+                                <InputText className={cnGoodsPage('Input')}
+                                           placeholder="Название" {...input} />
+                            )}
+                        </Field>
 
 
-                    <Field name="price">
-                        {({ input }) => (
-                            <InputText className={cnGoodsPage('Input')}
-                                       placeholder="Стоимость" {...input} />
-                        )}
-                    </Field>
+                        <Field name="price">
+                            {({ input }) => (
+                                <InputText className={cnGoodsPage('Input')}
+                                           placeholder="Стоимость" {...input} />
+                            )}
+                        </Field>
 
                     </div>
                     <div className={cnGoodsPage('Row')}>
 
-                    <Field name="type">
-                        {({ input }) => (
-                            <InputText className={cnGoodsPage('Input')}
-                                       placeholder="Тип" {...input} />
-                        )}
-                    </Field>
+                        <Field name="type">
+                            {({ input }) => (
+                                <InputText className={cnGoodsPage('Input')}
+                                           placeholder="Тип" {...input} />
+                            )}
+                        </Field>
 
-                    <Button type="submit" label="Добавить" />
+                        <Button type="submit" label="Добавить" />
                     </div>
                 </form>
             )}

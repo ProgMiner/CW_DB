@@ -1,6 +1,7 @@
 import { useStore } from '../store';
 import { Breed } from '../models/breed';
 
+
 interface CreateBreedParams {
     name: string;
     price: number;
@@ -19,7 +20,7 @@ export const useCreateBreed = () => {
                 price
             };
 
-            dispatch(store => ({ breeds: [breed, ...(store.breeds || [])], store }));
+            dispatch(store => ({ breeds: [breed, ...(store.breeds || [])], ...store }));
             resolve(breed);
         }));
     };

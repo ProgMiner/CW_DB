@@ -3,20 +3,21 @@
     display: flex;
     width: 100%;
     min-height: 0;
-    padding-left: 30px;
 }
 
 .BreedsPage-Form {
     display: flex;
+    min-height: 0;
+    flex-grow: 1;
 }
 
 .BreedsPage-Form > * {
-    width: 240px;
+    flex-grow: 1;
+    flex-basis: 1px;
 }
 
 .BreedsPage-Form .BreedsPage-Input {
     margin-right: 10px;
-
 }
 
 .BreedsPage-Table .p-column-title {

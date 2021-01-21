@@ -14,7 +14,7 @@ import './CatsPage.css';
 const cnCatsPage = cn('CatsPage');
 
 export const CatsPage: React.FC = () => (
-    <Page className={cnCatsPage()}>
+    <Page className={cnCatsPage()} title="Кошки">
         <MainLayout className={cnCatsPage('Layout')}>
             <VerticalFormTablePanel
                 form={(

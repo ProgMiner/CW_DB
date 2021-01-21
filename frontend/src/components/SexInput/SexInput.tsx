@@ -8,12 +8,13 @@ import './SexInput.css';
 
 
 export interface SexInputProps {
-    className?: string;
-    value?: Sex;
-    onChange?: (value: Sex) => void;
+    readonly className?: string;
+
+    readonly value?: Sex;
+    readonly onChange?: (value: Sex) => void;
 }
 
-const sexValues = ['MALE', 'FEMALE'] as const;
+const sexValues = ['M', 'F'] as const;
 
 const cnSexInput = cn('SexInput');
 

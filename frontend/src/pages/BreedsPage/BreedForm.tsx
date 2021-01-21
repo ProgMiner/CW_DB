@@ -4,7 +4,7 @@ import { InputText } from 'primereact/inputtext';
 import { cn } from '@bem-react/classname';
 import { Button } from 'primereact/button';
 
-import {useCreateBreed} from "../../hooks/useCreateBreed";
+import { useCreateBreed } from '../../hooks/useCreateBreed';
 
 
 const cnBreedsPage = cn('BreedsPage');

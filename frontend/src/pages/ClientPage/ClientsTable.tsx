@@ -9,10 +9,10 @@ import { cn } from '@bem-react/classname';
 const cnClientsPage = cn('ClientsPage');
 
 export const ClientsTable: React.FC = () => {
-    const { clients } = useClients();
+    const clients = useClients();
 
     return (
-        <DataTable value={clients} scrollable scrollHeight="350px" className={cnClientsPage("Table", ['p-datatable-sm'])}>
+        <DataTable value={clients ?? []} className={cnClientsPage('Table', ['p-datatable-sm'])}>
             <Column field="id" header="#" />
             <Column field="name" header="Название" />
             <Column field="discount" header="Размер скидки" />

@@ -7,13 +7,13 @@ import { BreedForm } from './BreedForm';
 import { BreedsTable } from './BreedsTable';
 
 import './BreedsPage.css';
-import {VerticalFormTablePanel} from "../../components/VerticalFormTablePanel/VerticalFormTablePanel";
+import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 
 
 const cnBreedsPage = cn('BreedsPage');
 
 export const BreedsPage: React.FC = () => (
-    <Page className={cnBreedsPage()}>
+    <Page className={cnBreedsPage()} title="Породы">
         <MainLayout className={cnBreedsPage('Layout')}>
             <VerticalFormTablePanel
                 form={(

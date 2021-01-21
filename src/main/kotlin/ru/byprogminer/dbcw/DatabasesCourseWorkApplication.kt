@@ -11,5 +11,5 @@ class DatabasesCourseWorkApplication
 
 
 fun main(args: Array<String>) {
-	runApplication<DatabasesCourseWorkApplication>(*args)
+    val app = runApplication<DatabasesCourseWorkApplication>(*args)
 }

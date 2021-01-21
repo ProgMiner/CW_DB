@@ -1,18 +1,22 @@
 import { useStore } from '../store';
-import { Cat } from '../models/cat';
+import { catsApi } from '../api/cats';
+import { useState } from 'react';
 
-const testCats: Cat[] = [
-    { id: 1, name: 'oaoao', sex: 'FEMALE', color: 314315 }
-];
+
+let loading = false;
 
 export const useCats = () => {
     const { state: { cats }, dispatch } = useStore();
 
-    if (!cats) {
-        setTimeout(() => dispatch(store => ({ cats: testCats, ...store })));
+    if (!loading && cats === null) {
+        loading = true;
 
-        return { loading: true, cats };
+        catsApi.getCats()
+            .then(newCats => dispatch(store => store.cats = newCats))
+            .catch(() => {});
+
+        return null;
     }
 
-    return { loading: false, cats };
+    return cats;
 };

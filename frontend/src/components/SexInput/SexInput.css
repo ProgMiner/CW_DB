@@ -24,10 +24,10 @@
     height: 20px;
 }
 
-.SexInput-Icon_male {
+.SexInput-Icon_m {
     background-image: url('./icons/male.svg');
 }
 
-.SexInput-Icon_female {
+.SexInput-Icon_f {
     background-image: url('./icons/female.svg');
 }

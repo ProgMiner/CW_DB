@@ -1,6 +1,7 @@
 import { useStore } from '../store';
 import { Client } from '../models/client';
 
+
 const testClients: Client[] = [
     { id: 1, name: 'oaoaoa', discount: 213 }
 ];
@@ -8,11 +9,11 @@ const testClients: Client[] = [
 export const useClients = () => {
     const { state: { clients }, dispatch } = useStore();
 
-    if (!clients) {
-        setTimeout(() => dispatch(store => ({ clients: testClients, ...store })));
+    if (clients === null) {
+        // setTimeout(() => dispatch(store => ({ clients: testClients, ...store })));
 
-        return { loading: true, clients };
+        return clients;
     }
 
-    return { loading: false, clients };
+    return clients;
 };

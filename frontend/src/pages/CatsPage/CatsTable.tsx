@@ -21,10 +21,10 @@ const ownerColumn = (cat: Cat) => cat.owner?.name || '-';
 const cnCatsPage = cn('CatsPage');
 
 export const CatsTable: React.FC = () => {
-    const { cats } = useCats();
+    const cats = useCats();
 
     return (
-        <DataTable value={cats} scrollable scrollHeight="350px" className={cnCatsPage("Table", ['p-datatable-sm'])}>
+        <DataTable value={cats ?? []} className={cnCatsPage('Table', ['p-datatable-sm'])}>
             <Column field="id" header="#" />
             <Column field="name" header="Имя" />
             <Column body={breedColumn} header="Порода" />

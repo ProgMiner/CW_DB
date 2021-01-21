@@ -1,5 +1,6 @@
 import { useStore } from '../store';
-import {Client} from '../models/client';
+import { Client } from '../models/client';
+
 
 interface CreateClientParams {
     name: string;
@@ -19,7 +20,7 @@ export const useCreateClient = () => {
                 discount: discount
             };
 
-            dispatch(store => ({ clients: [client, ...(store.clients || [])], store }));
+            dispatch(store => ({ clients: [client, ...(store.clients || [])], ...store }));
             resolve(client);
         }));
     };

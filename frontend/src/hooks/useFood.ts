@@ -1,8 +1,9 @@
 import { useStore } from '../store';
 import { Food } from '../models/food';
 
+
 const testFood: Food[] = [
-    { id: 1, name: 'oaoaoa' }
+    { id: 1, name: 'oaoaoa', allergens: [] }
 ];
 
 export const useFood = () => {

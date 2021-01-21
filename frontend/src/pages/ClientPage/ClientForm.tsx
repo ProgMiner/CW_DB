@@ -2,10 +2,9 @@ import React, { useCallback } from 'react';
 import { Field, Form } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';
 import { cn } from '@bem-react/classname';
-import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
 
-import {useCreateClient} from "../../hooks/useCreateClient";
+import { useCreateClient } from '../../hooks/useCreateClient';
 
 
 const cnClientsPage = cn('ClientsPage');

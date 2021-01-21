@@ -11,17 +11,21 @@
         "chokidar": "^3.5.1",
         "classnames": "^2.2.6",
         "final-form": "^4.20.1",
+        "lodash.clonedeep": "^4.5.0",
         "primeicons": "^4.1.0",
         "primereact": "^6.0.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-final-form": "^6.5.2",
+        "react-helmet": "^6.1.0",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.1",
         "react-transition-group": "^4.4.1",
         "typescript": "^4.0.3"
     },
     "devDependencies": {
+        "@types/lodash.clonedeep": "^4.5.6",
+        "@types/react-helmet": "^6.1.0",
         "@types/react-router-dom": "^5.1.7",
         "shx": "^0.3.3"
     },

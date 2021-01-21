@@ -7,9 +7,9 @@ import './FormTablePanel.css';
 
 
 export interface FormTablePanelProps {
-    className?: string;
-    form?: React.ReactNode;
-    table?: React.ReactNode;
+    readonly className?: string;
+    readonly form?: React.ReactNode;
+    readonly table?: React.ReactNode;
 }
 
 const cnFormTablePanel = cn('FormTablePanel');

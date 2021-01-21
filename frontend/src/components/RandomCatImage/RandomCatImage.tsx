@@ -5,7 +5,7 @@ import './RandomCatImage.css';
 
 
 export interface RandomCatImageProps {
-    className?: string;
+    readonly className?: string;
 }
 
 const cnRandomCatImage = cn('RandomCatImage');

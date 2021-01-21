@@ -3,24 +3,23 @@ import { Field, Form } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';
 import { cn } from '@bem-react/classname';
 import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
 
-import {useCreateAllergen} from "../../hooks/useCreateAllergen";
-import {useAllergens} from "../../hooks/useAllergens";
-import {useCats} from "../../hooks/useCats";
-import {useCreateFoodAllergen} from "../../hooks/useCreateFoodAllergen";
-import {useCreateCatAllergen} from "../../hooks/useCreateCatAllergen";
-import {Dropdown} from "primereact/dropdown";
+import { useCreateAllergen } from '../../hooks/useCreateAllergen';
+import { useAllergens } from '../../hooks/useAllergens';
+import { useCats } from '../../hooks/useCats';
+import { useAddCatAllergen } from '../../hooks/useAddCatAllergen';
 
 
 const cnAllergensPage = cn('AllergensPage');
 
 export const AllergenForm: React.FC = () => {
 
-    const {allergens} = useAllergens();
-    const allergensOptions = allergens?.map(({id, name}) => ({label: name, value: id})) || [];
+    const { allergens } = useAllergens();
+    const allergensOptions = allergens?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
-    const {cats} = useCats();
-    const catsOptions = cats?.map(({id, name}) => ({label: name, value: id})) || [];
+    const cats = useCats();
+    const catsOptions = cats?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
     const createAllergen = useCreateAllergen();
     const onSubmitAllergen = useCallback(
@@ -31,15 +30,14 @@ export const AllergenForm: React.FC = () => {
         [createAllergen]
     );
 
-    const createCatAllergen = useCreateCatAllergen();
+    const createCatAllergen = useAddCatAllergen();
     const onSubmitCatAllergen = useCallback(
-        async ({cat, allergen}, form) => {
-            await createCatAllergen({catId: cat, allergenId: allergen});
+        async ({ cat, allergen }, form) => {
+            await createCatAllergen({ catId: cat, allergenId: allergen });
             setTimeout(() => form.reset());
         },
         [createCatAllergen]
     );
-
 
     return (
         <div>
@@ -58,37 +56,31 @@ export const AllergenForm: React.FC = () => {
                 )}
             </Form>
 
-
             <Form onSubmit={onSubmitCatAllergen}>
-                {({handleSubmit}) => (
+                {({ handleSubmit }) => (
                     <form className={cnAllergensPage('Form')} onSubmit={handleSubmit}>
-                        <Field name="food">
-                            {({input}) => (
+                        <Field name="cat">
+                            {({ input }) => (
                                 <Dropdown className={cnAllergensPage('Input')}
                                           value={input.value} onChange={input.onChange}
                                           placeholder="Кошка" showClear={input.value} filter
-                                          options={catsOptions}/>
+                                          options={catsOptions} />
                             )}
                         </Field>
 
                         <Field name="allergen">
-                            {({input}) => (
+                            {({ input }) => (
                                 <Dropdown className={cnAllergensPage('Input')}
                                           value={input.value} onChange={input.onChange}
                                           placeholder="Аллерген" showClear={input.value} filter
-                                          options={allergensOptions}/>
+                                          options={allergensOptions} />
                             )}
                         </Field>
 
-                        <Button type="submit" label="Добавить кошке аллергию"/>
+                        <Button type="submit" label="Добавить кошке аллергию" />
                     </form>
                 )}
             </Form>
         </div>
-
-
-);
-
-
-
+    );
 };

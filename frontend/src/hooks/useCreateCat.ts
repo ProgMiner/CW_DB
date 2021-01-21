@@ -1,6 +1,7 @@
 import { useStore } from '../store';
-import { Cat } from '../models/cat';
 import { Sex } from '../models/sex';
+import { useCallback } from 'react';
+import { catsApi } from '../api/cats';
 
 
 interface CreateCatParams {
@@ -13,24 +14,24 @@ interface CreateCatParams {
 }
 
 export const useCreateCat = () => {
-    const { dispatch } = useStore();
+    const { state: { breeds, clients }, dispatch } = useStore();
 
-    return async ({ name, breedId, birthday, sex, color, ownerId }: CreateCatParams) => {
+    return useCallback(async ({ name, breedId, birthday, sex, color, ownerId }: CreateCatParams) => {
         console.log({ name, breedId, birthday, sex, color, ownerId });
 
-        return new Promise<Cat>(resolve => setTimeout(() => {
-            const cat: Cat = {
-                id: 134134,
-                name,
-                breed: breedId === undefined ? undefined : { id: breedId, name: '1312', price: 414 },
-                birthday,
-                sex,
-                color,
-                owner: ownerId === undefined ? undefined : { id: ownerId, name: 'er2rt2', discount: 123 }
-            };
+        const cat = await catsApi.createCat({
+            name,
+            breed: breeds?.find(({ id }) => id === breedId),
+            birthday,
+            sex,
+            color,
+            owner: clients?.find(({ id }) => id === ownerId),
+            allergens: [],
+            preferences: []
+        })
 
-            dispatch(store => ({ cats: [cat, ...(store.cats || [])], store }));
-            resolve(cat);
-        }));
-    };
+        dispatch(store => store.cats?.unshift(cat));
+
+        return cat;
+    }, [breeds, clients, dispatch]);
 };

@@ -3,21 +3,21 @@
     display: flex;
     width: 100%;
     min-height: 0;
-    padding-left: 30px;
 }
-
 
 .ClientsPage-Form {
     display: flex;
+    min-height: 0;
+    flex-grow: 1;
 }
 
 .ClientsPage-Form > * {
-    width: 240px;
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
 .ClientsPage-Form .ClientsPage-Input {
     margin-right: 10px;
-
 }
 
 .ClientsPage-Table .p-column-title {

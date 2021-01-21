@@ -7,13 +7,13 @@ import { ClientForm } from './ClientForm';
 import { ClientsTable } from './ClientsTable';
 
 import './ClientsPage.css';
-import {VerticalFormTablePanel} from "../../components/VerticalFormTablePanel/VerticalFormTablePanel";
+import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 
 
 const cnClientsPage = cn('ClientsPage');
 
 export const ClientsPage: React.FC = () => (
-    <Page className={cnClientsPage()}>
+    <Page className={cnClientsPage()} title="Клиенты">
         <MainLayout className={cnClientsPage('Layout')}>
             <VerticalFormTablePanel
                 form={(

@@ -1,5 +1,5 @@
 import { useStore } from '../store';
-import {Good} from "../models/good";
+import { Good } from '../models/good';
 
 const testGood: Good[] = [
     { id: 1, name: 'oaoaoa', price: 213, type: 'test' }

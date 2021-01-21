@@ -1,5 +1,6 @@
 import { useStore } from '../store';
-import {Good} from "../models/good";
+import { Good } from '../models/good';
+
 
 interface CreateFoodParams {
     name: string;
@@ -18,9 +19,10 @@ export const useCreateGood = () => {
                 id: 1367864,
                 name,
                 price,
-                type}
+                type
+            }
 
-            dispatch(store => ({ goods: [good, ...(store.goods || [])], store }));
+            dispatch(store => ({ goods: [good, ...(store.goods || [])], ...store }));
             resolve(good);
         }));
     };

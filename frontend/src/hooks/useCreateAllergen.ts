@@ -1,5 +1,6 @@
 import { useStore } from '../store';
-import {Allergen} from "../models/allergen";
+import { Allergen } from '../models/allergen';
+
 
 interface CreateAllergenParams {
     name: string;
@@ -17,7 +18,7 @@ export const useCreateAllergen = () => {
                 name
             };
 
-            dispatch(store => ({ allergens: [allergen, ...(store.allergens || [])], store }));
+            dispatch(store => ({ allergens: [allergen, ...(store.allergens || [])], ...store }));
             resolve(allergen);
         }));
     };

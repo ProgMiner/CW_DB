@@ -5,16 +5,15 @@ import { MainLayout } from '../../layouts/MainLayout/MainLayout';
 import { Page } from '../../components/Page';
 
 import './CatPreferencesPage.css';
-import {VerticalFormTablePanel} from "../../components/VerticalFormTablePanel/VerticalFormTablePanel";
-import {CatPreferenceForm} from "./CatPreferenceForm";
-import {CatPreferencesTable} from "./CatPreferencesTable";
-
+import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
+import { CatPreferenceForm } from './CatPreferenceForm';
+import { CatPreferencesTable } from './CatPreferencesTable';
 
 
 const cnCatPreferencesPage = cn('CatPreferencesPage');
 
 export const CatPreferencesPage: React.FC = () => (
-    <Page className={cnCatPreferencesPage()}>
+    <Page className={cnCatPreferencesPage()} title="Предпочтения">
         <MainLayout className={cnCatPreferencesPage('Layout')}>
             <VerticalFormTablePanel
                 form={(

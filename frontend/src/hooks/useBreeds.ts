@@ -1,6 +1,7 @@
 import { useStore } from '../store';
 import { Breed } from '../models/breed';
 
+
 const testBreeds: Breed[] = [
     { id: 1, name: 'oaoaoa', price: 213 }
 ];
@@ -8,11 +9,11 @@ const testBreeds: Breed[] = [
 export const useBreeds = () => {
     const { state: { breeds }, dispatch } = useStore();
 
-    if (!breeds) {
-        setTimeout(() => dispatch(store => ({ breeds: testBreeds, ...store })));
+    if (breeds === null) {
+        // setTimeout(() => dispatch(store => ({ breeds: testBreeds, ...store })));
 
-        return { loading: true, breeds };
+        return breeds;
     }
 
-    return { loading: false, breeds };
+    return breeds;
 };

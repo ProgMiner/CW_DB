@@ -1,19 +1,19 @@
 import React from 'react';
 import { cn } from '@bem-react/classname';
 
+import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 import { MainLayout } from '../../layouts/MainLayout/MainLayout';
 import { Page } from '../../components/Page';
+import { AllergenForm } from './AllergenForm';
+import { AllergensTable } from './AllergensTable';
 
 import './AllergensPage.css';
-import {VerticalFormTablePanel} from "../../components/VerticalFormTablePanel/VerticalFormTablePanel";
-import {AllergenForm} from "./AllergenForm";
-import {AllergensTable} from "./AllergensTable";
 
 
 const cnAllergensPage = cn('AllergensPage');
 
 export const AllergensPage: React.FC = () => (
-    <Page className={cnAllergensPage()}>
+    <Page className={cnAllergensPage()} title="Аллергены">
         <MainLayout className={cnAllergensPage('Layout')}>
             <VerticalFormTablePanel
                 form={(
