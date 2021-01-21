@@ -1,5 +1,7 @@
 import { useStore } from '../store';
 import { Client } from '../models/client';
+import {useCallback} from 'react';
+import {clientsApi} from '../api/clients';
 
 
 interface CreateClientParams {
@@ -10,18 +12,16 @@ interface CreateClientParams {
 export const useCreateClient = () => {
     const { dispatch } = useStore();
 
-    return async ({ name, discount }: CreateClientParams) => {
-        console.log({ name, discount: discount });
+    return useCallback(async ({ name, discount }: CreateClientParams) => {
+        console.log({ name, discount});
 
-        return new Promise<Client>(resolve => setTimeout(() => {
-            const client: Client = {
-                id: 13414,
-                name,
-                discount: discount
-            };
+        const client = await clientsApi.createClient({
+            name,
+            discount
+        })
 
-            dispatch(store => ({ clients: [client, ...(store.clients || [])], ...store }));
-            resolve(client);
-        }));
-    };
+        dispatch(store => store.clients?.unshift(client));
+
+        return client;
+    }, [dispatch]);
 };

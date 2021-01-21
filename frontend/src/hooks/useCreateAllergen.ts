@@ -1,5 +1,7 @@
 import { useStore } from '../store';
 import { Allergen } from '../models/allergen';
+import {useCallback} from 'react';
+import {allergensApi} from '../api/allergens';
 
 
 interface CreateAllergenParams {
@@ -9,17 +11,15 @@ interface CreateAllergenParams {
 export const useCreateAllergen = () => {
     const { dispatch } = useStore();
 
-    return async ({ name }: CreateAllergenParams) => {
-        console.log({ name });
+    return useCallback(async ({ name}: CreateAllergenParams) => {
+        console.log({ name});
 
-        return new Promise<Allergen>(resolve => setTimeout(() => {
-            const allergen: Allergen = {
-                id: 114,
-                name
-            };
+        const allergen = await allergensApi.createAllergen({
+            name
+        })
 
-            dispatch(store => ({ allergens: [allergen, ...(store.allergens || [])], ...store }));
-            resolve(allergen);
-        }));
-    };
+        dispatch(store => store.allergens?.unshift(allergen));
+
+        return allergen;
+    }, [dispatch]);
 };

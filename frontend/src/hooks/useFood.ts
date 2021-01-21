@@ -1,19 +1,20 @@
 import { useStore } from '../store';
 import { Food } from '../models/food';
+import {foodApi} from '../api/food';
 
-
-const testFood: Food[] = [
-    { id: 1, name: 'oaoaoa', allergens: [] }
-];
+let loading = false;
 
 export const useFood = () => {
     const { state: { food }, dispatch } = useStore();
 
-    if (!food) {
-        setTimeout(() => dispatch(store => ({ food: testFood, ...store })));
+    if (!loading && food === null) {
+        loading = true;
 
-        return { loading: true, food };
+        foodApi.getFood()
+            .then(newFood => dispatch(store => store.food = newFood))
+            .catch(() => {});
+
+        return null;
     }
-
-    return { loading: false, food };
+    return food;
 };

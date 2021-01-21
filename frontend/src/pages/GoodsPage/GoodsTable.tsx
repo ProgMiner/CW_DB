@@ -8,7 +8,7 @@ import { useGoods } from '../../hooks/useGoods';
 const cnGoodsPage = cn('GoodsPage');
 
 export const GoodsTable: React.FC = () => {
-    const { goods } = useGoods();
+    const goods = useGoods();
 
     return (
         <DataTable value={goods ?? []} scrollable scrollHeight="350px" className={cnGoodsPage('Table', ['p-datatable-sm'])}>

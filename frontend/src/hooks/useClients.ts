@@ -1,18 +1,21 @@
 import { useStore } from '../store';
 import { Client } from '../models/client';
+import {clientsApi} from '../api/clients';
 
 
-const testClients: Client[] = [
-    { id: 1, name: 'oaoaoa', discount: 213 }
-];
+let loading = false;
 
 export const useClients = () => {
     const { state: { clients }, dispatch } = useStore();
 
-    if (clients === null) {
-        // setTimeout(() => dispatch(store => ({ clients: testClients, ...store })));
+    if (!loading && clients === null) {
+        loading = true;
 
-        return clients;
+        clientsApi.getClients()
+            .then(newClients => dispatch(store => store.clients = newClients))
+            .catch(() => {});
+
+        return null;
     }
 
     return clients;

@@ -1,19 +1,23 @@
 import { useStore } from '../store';
 import { Breed } from '../models/breed';
+import {breedsApi} from '../api/breeds';
 
-
-const testBreeds: Breed[] = [
-    { id: 1, name: 'oaoaoa', price: 213 }
-];
+let loading = false;
 
 export const useBreeds = () => {
     const { state: { breeds }, dispatch } = useStore();
 
-    if (breeds === null) {
-        // setTimeout(() => dispatch(store => ({ breeds: testBreeds, ...store })));
 
-        return breeds;
+    if (!loading && breeds === null) {
+        loading = true;
+
+        breedsApi.getBreeds()
+            .then(newBreeds => dispatch(store => store.breeds = newBreeds))
+            .catch(() => {});
+
+        return null;
     }
+
 
     return breeds;
 };

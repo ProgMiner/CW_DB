@@ -5,7 +5,7 @@ import { Allergen } from '../models/allergen';
 
 interface AddFoodAllergenParams {
     foodId: number;
-    allergenId?: number;
+    allergenId: number;
 }
 
 export const useAddFoodAllergen = () => {

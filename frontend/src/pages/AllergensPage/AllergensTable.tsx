@@ -9,7 +9,7 @@ import { useAllergens } from '../../hooks/useAllergens';
 const cnAllergensPage = cn('AllergensPage');
 
 export const AllergensTable: React.FC = () => {
-    const { allergens } = useAllergens();
+    const allergens  = useAllergens();
 
     return (
         <DataTable value={allergens ?? []} className={cnAllergensPage('Table', ['p-datatable-sm'])}>

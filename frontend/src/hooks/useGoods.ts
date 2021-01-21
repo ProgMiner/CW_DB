@@ -1,18 +1,21 @@
 import { useStore } from '../store';
 import { Good } from '../models/good';
+import {catsApi} from '../api/cats';
+import {goodsApi} from '../api/goods';
 
-const testGood: Good[] = [
-    { id: 1, name: 'oaoaoa', price: 213, type: 'test' }
-];
+let loading = false;
 
 export const useGoods = () => {
     const { state: { goods }, dispatch } = useStore();
 
-    if (!goods) {
-        setTimeout(() => dispatch(store => ({ goods: testGood, ...store })));
+    if (!loading && goods === null) {
+        loading = true;
 
-        return { loading: true, goods };
+        goodsApi.getGoods()
+            .then(newGoods => dispatch(store => store.goods = newGoods))
+            .catch(() => {});
+
+        return null;
     }
-
-    return { loading: false, goods };
+    return goods;
 };

@@ -9,13 +9,14 @@ import { useCreateAllergen } from '../../hooks/useCreateAllergen';
 import { useAllergens } from '../../hooks/useAllergens';
 import { useCats } from '../../hooks/useCats';
 import { useAddCatAllergen } from '../../hooks/useAddCatAllergen';
+import {useBreeds} from '../../hooks/useBreeds';
 
 
 const cnAllergensPage = cn('AllergensPage');
 
 export const AllergenForm: React.FC = () => {
 
-    const { allergens } = useAllergens();
+    const allergens = useAllergens();
     const allergensOptions = allergens?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
     const cats = useCats();

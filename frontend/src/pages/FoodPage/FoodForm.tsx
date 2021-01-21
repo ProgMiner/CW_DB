@@ -15,13 +15,14 @@ import { useAddFoodAllergen } from '../../hooks/useAddFoodAllergen';
 const cnFoodPage = cn('FoodPage');
 
 export const FoodForm: React.FC = () => {
-    const { allergens } = useAllergens();
+
+    const allergens  = useAllergens();
     const allergensOptions = allergens?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
-    const { goods } = useGoods();
+    const goods = useGoods();
     const goodsOptions = goods?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
-    const { food } = useFood();
+    const food = useFood();
     const foodOptions = food?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
     const createFood = useCreateFood();

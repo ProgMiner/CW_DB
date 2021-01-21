@@ -3,15 +3,15 @@ import { Allergen } from '../models/allergen';
 import { Cat } from '../models/cat';
 
 
-interface AddFoodAllergenParams {
+interface AddCatAllergenParams {
     catId: number;
-    allergenId?: number;
+    allergenId: number;
 }
 
 export const useAddCatAllergen = () => {
     const { dispatch } = useStore();
 
-    return async ({ catId, allergenId }: AddFoodAllergenParams) => {
+    return async ({ catId, allergenId }: AddCatAllergenParams) => {
         console.log({ catId, allergenId });
 
         return new Promise<Cat | undefined>(resolve => setTimeout(() => {

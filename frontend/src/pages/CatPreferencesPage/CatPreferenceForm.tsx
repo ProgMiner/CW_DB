@@ -16,7 +16,7 @@ export const CatPreferenceForm: React.FC = () => {
     const cats = useCats();
     const catsOptions = cats?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
-    const { food } = useFood();
+    const food  = useFood();
     const foodOptions = food?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
 

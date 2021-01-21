@@ -12,7 +12,7 @@ const goodColumn = (food: Food) => food.good?.id || '-';
 const cnBreedsPage = cn('BreedsPage');
 
 export const FoodTable: React.FC = () => {
-    const { food } = useFood();
+    const food = useFood();
 
     return (
         <DataTable value={food ?? []} scrollable scrollHeight="350px" className={cnBreedsPage('Table', ['p-datatable-sm'])}>

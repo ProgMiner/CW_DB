@@ -1,6 +1,7 @@
 import { useStore } from '../store';
 import { Breed } from '../models/breed';
-
+import {useCallback} from 'react';
+import {breedsApi} from '../api/breeds'
 
 interface CreateBreedParams {
     name: string;
@@ -10,18 +11,16 @@ interface CreateBreedParams {
 export const useCreateBreed = () => {
     const { dispatch } = useStore();
 
-    return async ({ name, price }: CreateBreedParams) => {
+    return useCallback(async ({ name, price}: CreateBreedParams) => {
         console.log({ name, price });
 
-        return new Promise<Breed>(resolve => setTimeout(() => {
-            const breed: Breed = {
-                id: 13414,
-                name,
-                price
-            };
+        const breed = await breedsApi.createBreed({
+            name,
+            price
+        })
 
-            dispatch(store => ({ breeds: [breed, ...(store.breeds || [])], ...store }));
-            resolve(breed);
-        }));
-    };
+        dispatch(store => store.breeds?.unshift(breed));
+
+        return breed;
+    }, [dispatch]);
 };

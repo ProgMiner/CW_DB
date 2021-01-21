@@ -1,19 +1,22 @@
 import { useStore } from '../store';
 import { Allergen } from '../models/allergen';
+import {allergensApi} from '../api/allergens';
 
 
-const testAllergens: Allergen[] = [
-    { id: 1, name: 'otttaoaoa' }
-];
+let loading = false;
 
 export const useAllergens = () => {
     const { state: { allergens }, dispatch } = useStore();
 
-    if (!allergens) {
-        setTimeout(() => dispatch(store => ({ allergens: testAllergens, ...store })));
+    if (!loading && allergens === null) {
+        loading = true;
 
-        return { loading: true, allergens };
+        allergensApi.getAllergens()
+            .then(newAllergens => dispatch(store => store.allergens = newAllergens))
+            .catch(() => {});
+
+        return null;
     }
 
-    return { loading: false, allergens };
+    return allergens;
 };

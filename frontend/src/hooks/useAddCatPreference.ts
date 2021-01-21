@@ -5,7 +5,7 @@ import { Food } from '../models/food';
 
 interface AddCatPreferenceParams {
     catId: number;
-    foodId?: number;
+    foodId: number;
 }
 
 export const useAddCatPreference = () => {

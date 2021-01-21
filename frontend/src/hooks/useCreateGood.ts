@@ -1,8 +1,10 @@
 import { useStore } from '../store';
 import { Good } from '../models/good';
+import {useCallback} from 'react';
+import {goodsApi} from '../api/goods';
 
 
-interface CreateFoodParams {
+interface CreateGoodParams {
     name: string;
     price: number;
     type: string;
@@ -11,19 +13,17 @@ interface CreateFoodParams {
 export const useCreateGood = () => {
     const { dispatch } = useStore();
 
-    return async ({ name, price, type }: CreateFoodParams) => {
+    return useCallback(async ({ name, price, type }: CreateGoodParams) => {
         console.log({ name, price, type });
 
-        return new Promise<Good>(resolve => setTimeout(() => {
-            const good: Good = {
-                id: 1367864,
-                name,
-                price,
-                type
-            }
+        const good = await goodsApi.createGood({
+            name,
+            price,
+            type
+        })
 
-            dispatch(store => ({ goods: [good, ...(store.goods || [])], ...store }));
-            resolve(good);
-        }));
-    };
+        dispatch(store => store.goods?.unshift(good));
+
+        return good;
+    }, [dispatch]);
 };
