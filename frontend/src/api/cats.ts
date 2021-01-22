@@ -21,5 +21,11 @@ export const catsApi = {
             method: 'POST',
             body: String(allergenId)
         }));
+    },
+    addCatPreference: async (catId: number, foodId: number): Promise<Cat> => {
+        return mapper.to.cat(await doApiRequest(`cat/${catId}/preference`, {
+            method: 'POST',
+            body: String(foodId)
+        }));
     }
 };

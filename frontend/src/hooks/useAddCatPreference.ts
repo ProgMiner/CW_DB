@@ -1,7 +1,5 @@
-// import { useStore } from '../store';
-// import { Cat } from '../models/cat';
-// import { Food } from '../models/food';
-
+import { useStore } from '../store';
+import { catsApi } from '../api/cats';
 
 interface AddCatPreferenceParams {
     catId: number;
@@ -9,16 +7,13 @@ interface AddCatPreferenceParams {
 }
 
 export const useAddCatPreference = () => {
-    // const { dispatch } = useStore();
+    const { dispatch } = useStore();
 
     return async ({ catId, foodId }: AddCatPreferenceParams) => {
-        console.log({ catId, foodId });
+        const newCat = await catsApi.addCatPreference(catId, foodId);
 
-        // return new Promise<Cat>(resolve => setTimeout(() => {
-            // const catPreference: Food = { id: foodId, name: 'testfood', allergens: [] };
+        dispatch(store => store.cats![store.cats!.findIndex(cat => cat.id === newCat.id)] = newCat);
 
-            // dispatch(store => ({ catPreferences: [catPreference, ...(store.catPreferences || [])], store }));
-            // resolve(catPreference);
-        // }));
+        return newCat;
     };
 };

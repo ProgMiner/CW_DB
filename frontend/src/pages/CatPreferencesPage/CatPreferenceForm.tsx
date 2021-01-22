@@ -7,6 +7,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { useCats } from '../../hooks/useCats';
 import { useFood } from '../../hooks/useFood';
 import { useAddCatPreference } from '../../hooks/useAddCatPreference';
+import { requiredValidator } from '../../utils/validators';
 
 
 const cnCatPreferencesPage = cn('CatPreferencesPage');
@@ -33,7 +34,7 @@ export const CatPreferenceForm: React.FC = () => {
         <Form onSubmit={onSubmit}>
             {({ handleSubmit }) => (
                 <form className={cnCatPreferencesPage('Form')} onSubmit={handleSubmit}>
-                    <Field name="cat">
+                    <Field name="cat" validate={requiredValidator()}>
                         {({ input }) => (
                             <Dropdown className={cnCatPreferencesPage('Input')}
                                       value={input.value} onChange={input.onChange}
@@ -42,7 +43,7 @@ export const CatPreferenceForm: React.FC = () => {
                         )}
                     </Field>
 
-                    <Field name="food">
+                    <Field name="food" validate={requiredValidator()}>
                         {({ input }) => (
                             <Dropdown className={cnCatPreferencesPage('Input')}
                                       value={input.value} onChange={input.onChange}

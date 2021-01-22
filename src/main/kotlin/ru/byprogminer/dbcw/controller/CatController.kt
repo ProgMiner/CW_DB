@@ -22,4 +22,10 @@ class CatController(
         @PathVariable id: Long,
         @RequestBody allergenId: Int
     ): Cat = service.addCatAllergen(id, allergenId)
+
+    @PostMapping("/{id}/preference")
+    fun addCatPreference(
+        @PathVariable id: Long,
+        @RequestBody foodId: Int
+    ): Cat = service.addCatPreference(id, foodId)
 }

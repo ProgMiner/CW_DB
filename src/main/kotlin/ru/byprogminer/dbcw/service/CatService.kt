@@ -5,11 +5,11 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.simple.SimpleJdbcCall
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import ru.byprogminer.dbcw.entity.Allergen
 import ru.byprogminer.dbcw.entity.Cat
 import ru.byprogminer.dbcw.repository.AllergenRepository
 import ru.byprogminer.dbcw.repository.CatRepository
 import ru.byprogminer.dbcw.repository.ClientRepository
+import ru.byprogminer.dbcw.repository.FoodRepository
 
 @Service
 @Transactional
@@ -17,6 +17,7 @@ class CatService(
     private val repository: CatRepository,
     private val clientRepository: ClientRepository,
     private val allergenRepository: AllergenRepository,
+    private val foodRepository: FoodRepository,
     private val jdbcTemplate: JdbcTemplate
 ) {
 
@@ -43,6 +44,14 @@ class CatService(
         val cat = repository.findById(catId).get()
 
         cat.allergens.add(allergenRepository.getOne(allergenId))
+
+        return cat
+    }
+
+    fun addCatPreference(catId: Long, foodId: Int): Cat {
+        val cat = repository.findById(catId).get()
+
+        cat.preferences.add(foodRepository.getOne(foodId))
 
         return cat
     }
