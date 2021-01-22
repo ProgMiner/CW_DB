@@ -16,5 +16,6 @@ export const useFood = () => {
 
         return null;
     }
+
     return food;
 };

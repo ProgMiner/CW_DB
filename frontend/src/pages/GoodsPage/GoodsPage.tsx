@@ -15,14 +15,7 @@ const cnGoodsPage = cn('GoodsPage');
 export const GoodsPage: React.FC = () => (
     <Page className={cnGoodsPage()} title="Товары">
         <MainLayout className={cnGoodsPage('Layout')}>
-            <VerticalFormTablePanel
-                form={(
-                    <div className={cnGoodsPage('FormContainer')}>
-                        <GoodForm />
-                    </div>
-                )}
-                table={<GoodsTable />}
-            />
+            <VerticalFormTablePanel form={<GoodForm />} table={<GoodsTable />} />
         </MainLayout>
     </Page>
 );

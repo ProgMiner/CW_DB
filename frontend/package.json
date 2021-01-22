@@ -85,7 +85,10 @@
                 }
             ],
             "@typescript-eslint/no-explicit-any": "error",
-            "semi": ["error", "always"]
+            "semi": [
+                "error",
+                "always"
+            ]
         }
     },
     "browserslist": {

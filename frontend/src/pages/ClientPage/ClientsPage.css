@@ -1,12 +1,7 @@
 
-.ClientsPage-FormContainer {
-    display: flex;
-    width: 100%;
-    min-height: 0;
-}
-
 .ClientsPage-Form {
     display: flex;
+    width: 100%;
     min-height: 0;
     flex-grow: 1;
 }

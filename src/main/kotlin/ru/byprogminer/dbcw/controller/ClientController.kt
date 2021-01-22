@@ -1,9 +1,7 @@
 package ru.byprogminer.dbcw.controller
 
 import org.springframework.web.bind.annotation.*
-import ru.byprogminer.dbcw.entity.Cat
 import ru.byprogminer.dbcw.entity.Client
-import ru.byprogminer.dbcw.service.CatService
 import ru.byprogminer.dbcw.service.ClientService
 
 @RestController

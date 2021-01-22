@@ -12,11 +12,11 @@ export const GoodsTable: React.FC = () => {
     const goods = useGoods();
 
     return (
-        <DataTable value={goods ?? []} scrollable scrollHeight="350px" className={cnGoodsPage('Table', ['p-datatable-sm'])} paginator rows={10}>
-            <Column field="id" header="#" />
+        <DataTable className={cnGoodsPage('Table', ['p-datatable-sm'])} value={goods ?? []} paginator rows={10}>
+            <Column field="id" header="#" headerStyle={{ width: '50px' }} />
             <Column field="name" header="Название" />
-            <Column field="price" header="Стоимость" />
-            <Column field="type" header="Тип" />
+            <Column field="price" header="Стоимость" headerStyle={{ width: '100px' }} />
+            <Column field="type" header="Тип" headerStyle={{ width: '200px' }} />
 
         </DataTable>
     );

@@ -24,7 +24,8 @@ export const CatsTable: React.FC = () => {
     const cats = useCats();
 
     return (
-        <DataTable className={cnCatsPage('Table', ['p-datatable-sm'])} value={cats ?? []} paginator rows={10}>
+        <DataTable className={cnCatsPage('Table', ['p-datatable-sm'])}
+                   value={cats ?? []} paginator rows={10}>
             <Column field="id" header="#" headerStyle={{ width: '50px' }} />
             <Column field="name" header="Имя" headerStyle={{ width: '150px' }} />
             <Column body={breedColumn} header="Порода" headerStyle={{ width: '150px' }} />

@@ -11,5 +11,7 @@ export interface RandomCatImageProps {
 const cnRandomCatImage = cn('RandomCatImage');
 
 export const RandomCatImage: React.FC<RandomCatImageProps> = ({ className }) => (
-    <div className={cnRandomCatImage(null, [className])} />
+    <div className={cnRandomCatImage(null, [className])}>
+        <img src="https://thiscatdoesnotexist.com/" alt="Кот" className={cnRandomCatImage('Image')} />
+    </div>
 );
