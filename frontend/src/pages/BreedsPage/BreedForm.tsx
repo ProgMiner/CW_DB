@@ -6,7 +6,7 @@ import { Button } from 'primereact/button';
 import { InputNumber } from 'primereact/inputnumber';
 
 import { useCreateBreed } from '../../hooks/useCreateBreed';
-import { composeValidators, minValidator, requiredValidator } from '../../utils/validators';
+import { composeValidators, greaterValidator, requiredValidator } from '../../utils/validators';
 
 
 const cnBreedsPage = cn('BreedsPage');
@@ -36,7 +36,7 @@ export const BreedForm: React.FC = () => {
 
                     <Field<number> name="price"
                                    initialValue={undefined}
-                                   validate={composeValidators(requiredValidator(), minValidator(0))}>
+                                   validate={composeValidators(requiredValidator(), greaterValidator(0))}>
                         {({ input }) => (
                             <InputNumber className={cnBreedsPage('Input')}
                                          placeholder="Стоимость"

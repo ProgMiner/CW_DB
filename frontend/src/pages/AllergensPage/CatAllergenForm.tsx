@@ -8,6 +8,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { useAllergens } from '../../hooks/useAllergens';
 import { useCats } from '../../hooks/useCats';
 import { useAddCatAllergen } from '../../hooks/useAddCatAllergen';
+import { requiredValidator } from '../../utils/validators';
 
 
 const cnAllergensPage = cn('AllergensPage');
@@ -34,7 +35,7 @@ export const CatAllergenForm: React.FC = () => {
         <Form onSubmit={onSubmitCatAllergen}>
             {({ handleSubmit }) => (
                 <form className={cnAllergensPage('Form')} onSubmit={handleSubmit}>
-                    <Field name="cat">
+                    <Field name="cat" validate={requiredValidator()}>
                         {({ input }) => (
                             <Dropdown className={cnAllergensPage('Input')}
                                       value={input.value} onChange={input.onChange}
@@ -43,7 +44,7 @@ export const CatAllergenForm: React.FC = () => {
                         )}
                     </Field>
 
-                    <Field name="allergen">
+                    <Field name="allergen" validate={requiredValidator()}>
                         {({ input }) => (
                             <Dropdown className={cnAllergensPage('Input')}
                                       value={input.value} onChange={input.onChange}

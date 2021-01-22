@@ -10,7 +10,7 @@ CREATE TABLE client
 (
 	id	SERIAL PRIMARY KEY,
 	name VARCHAR(1023) NOT NULL,
-	discount NUMERIC NOT NULL DEFAULT 0.05 CHECK (discount >0 and discount < 1)
+	discount NUMERIC NOT NULL DEFAULT 0.05 CHECK (discount > 0 and discount < 1)
 );
 
 CREATE TABLE cat

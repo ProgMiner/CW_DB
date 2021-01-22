@@ -16,7 +16,7 @@ export const CatPreferenceForm: React.FC = () => {
     const cats = useCats();
     const catsOptions = cats?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
-    const food  = useFood();
+    const food = useFood();
     const foodOptions = food?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
 
@@ -30,11 +30,10 @@ export const CatPreferenceForm: React.FC = () => {
     );
 
     return (
-
         <Form onSubmit={onSubmit}>
             {({ handleSubmit }) => (
                 <form className={cnCatPreferencesPage('Form')} onSubmit={handleSubmit}>
-                    <Field name="food">
+                    <Field name="cat">
                         {({ input }) => (
                             <Dropdown className={cnCatPreferencesPage('Input')}
                                       value={input.value} onChange={input.onChange}
@@ -56,9 +55,5 @@ export const CatPreferenceForm: React.FC = () => {
                 </form>
             )}
         </Form>
-
-
     );
-
-
 };

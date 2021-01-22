@@ -5,7 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.simple.SimpleJdbcCall
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import ru.byprogminer.dbcw.entity.Allergen
 import ru.byprogminer.dbcw.entity.Cat
+import ru.byprogminer.dbcw.repository.AllergenRepository
 import ru.byprogminer.dbcw.repository.CatRepository
 import ru.byprogminer.dbcw.repository.ClientRepository
 
@@ -14,6 +16,7 @@ import ru.byprogminer.dbcw.repository.ClientRepository
 class CatService(
     private val repository: CatRepository,
     private val clientRepository: ClientRepository,
+    private val allergenRepository: AllergenRepository,
     private val jdbcTemplate: JdbcTemplate
 ) {
 
@@ -34,5 +37,13 @@ class CatService(
         }
 
         return repository.findById(id).get()
+    }
+
+    fun addCatAllergen(catId: Long, allergenId: Int): Cat {
+        val cat = repository.findById(catId).get()
+
+        cat.allergens.add(allergenRepository.getOne(allergenId))
+
+        return cat
     }
 }

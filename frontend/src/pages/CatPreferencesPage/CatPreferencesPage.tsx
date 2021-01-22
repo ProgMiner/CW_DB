@@ -15,14 +15,7 @@ const cnCatPreferencesPage = cn('CatPreferencesPage');
 export const CatPreferencesPage: React.FC = () => (
     <Page className={cnCatPreferencesPage()} title="Предпочтения">
         <MainLayout className={cnCatPreferencesPage('Layout')}>
-            <VerticalFormTablePanel
-                form={(
-                    <div className={cnCatPreferencesPage('FormContainer')}>
-                        <CatPreferenceForm />
-                    </div>
-                )}
-                table={<CatPreferencesTable />}
-            />
+            <VerticalFormTablePanel form={<CatPreferenceForm />} table={<CatPreferencesTable />} />
         </MainLayout>
     </Page>
 );

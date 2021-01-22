@@ -13,8 +13,9 @@ export const AllergensTable: React.FC = () => {
     const allergens = useAllergens();
 
     return (
-        <DataTable value={allergens ?? []} className={cnAllergensPage('Table', ['p-datatable-sm'])} paginator rows={10}>
-            <Column field="id" header="#" />
+        <DataTable className={cnAllergensPage('Table', ['p-datatable-sm'])}
+                   paginator rows={10} pageLinkSize={30} value={allergens ?? []}>
+            <Column field="id" header="#" headerStyle={{ width: '100px' }} />
             <Column field="name" header="Наименование" />
         </DataTable>
     );

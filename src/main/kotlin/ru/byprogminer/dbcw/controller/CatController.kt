@@ -1,6 +1,7 @@
 package ru.byprogminer.dbcw.controller
 
 import org.springframework.web.bind.annotation.*
+import ru.byprogminer.dbcw.entity.Allergen
 import ru.byprogminer.dbcw.entity.Cat
 import ru.byprogminer.dbcw.service.CatService
 
@@ -15,4 +16,10 @@ class CatController(
 
     @PostMapping
     fun createCat(@RequestBody cat: Cat): Cat = service.createCat(cat)
+
+    @PostMapping("/{id}/allergen")
+    fun addCatAllergen(
+        @PathVariable id: Long,
+        @RequestBody allergenId: Int
+    ): Cat = service.addCatAllergen(id, allergenId)
 }

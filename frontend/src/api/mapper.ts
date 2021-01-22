@@ -35,7 +35,7 @@ const assertObject = <T>(mapper: (value: Record<string, unknown>) => T) => {
 
 export const mapper: Mapper = {
     to: {
-        cat: assertObject(({ id, name, breed, birthday, sex, color, owner }) => ({
+        cat: assertObject(({ id, name, breed, birthday, sex, color, owner, allergens, preferences }) => ({
             id: id as number,
             name: name as string,
             breed: breed ? mapper.to.breed(breed) : undefined,
@@ -43,16 +43,16 @@ export const mapper: Mapper = {
             sex: sex as Sex,
             color: color as number,
             owner: owner ? mapper.to.client(owner) : undefined,
-            allergens: [],
-            preferences: []
+            allergens: mapper.toList('allergen', allergens),
+            preferences: mapper.toList('food', preferences)
         })),
         breed: assertObject(breed => breed as unknown as Breed),
         client: assertObject(client => client as unknown as Client),
-        food: assertObject(({ id, name, good }) => ({
+        food: assertObject(({ id, name, good, allergens }) => ({
             id: id as number,
             name: name as string,
             good: good ? mapper.to.good(good) : undefined,
-            allergens: []
+            allergens: mapper.toList('allergen', allergens)
         })),
         good: assertObject(good => good as unknown as Good),
         allergen: assertObject(allergen => allergen as unknown as Allergen)

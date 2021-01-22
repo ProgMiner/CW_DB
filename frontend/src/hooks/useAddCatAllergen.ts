@@ -1,6 +1,5 @@
-// import { useStore } from '../store';
-// import { Allergen } from '../models/allergen';
-// import { Cat } from '../models/cat';
+import { useStore } from '../store';
+import { catsApi } from '../api/cats';
 
 
 interface AddCatAllergenParams {
@@ -9,16 +8,13 @@ interface AddCatAllergenParams {
 }
 
 export const useAddCatAllergen = () => {
-    // const { dispatch } = useStore();
+    const { dispatch } = useStore();
 
     return async ({ catId, allergenId }: AddCatAllergenParams) => {
-        console.log({ catId, allergenId });
+        const newCat = await catsApi.addCatAllergen(catId, allergenId);
 
-        // return new Promise<Cat | undefined>(resolve => setTimeout(() => {
-            // const allergen: Allergen = { id: allergenId, name: 'testallergen' };
+        dispatch(store => store.cats![store.cats!.findIndex(cat => cat.id === newCat.id)] = newCat);
 
-            // dispatch(store => ({ catAllergens: [catAllergen, ...(store.catAllergens || [])], store }));
-            // resolve(catAllergen);
-        // }));
+        return newCat;
     };
 };

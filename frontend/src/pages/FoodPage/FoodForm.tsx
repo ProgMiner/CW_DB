@@ -11,6 +11,7 @@ import { useGoods } from '../../hooks/useGoods';
 import { useFood } from '../../hooks/useFood';
 import { useAddFoodAllergen } from '../../hooks/useAddFoodAllergen';
 import { Good } from '../../models/good';
+import { requiredValidator } from '../../utils/validators';
 
 
 const cnFoodPage = cn('FoodPage');
@@ -19,11 +20,13 @@ export const FoodForm: React.FC = () => {
     const allergens = useAllergens();
     const allergensOptions = allergens?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
-    const goods = useGoods();
-    const goodsOptions = goods?.map(good => ({ label: good.name, value: good })) || [];
-
     const food = useFood();
     const foodOptions = food?.map(({ id, name }) => ({ label: name, value: id })) || [];
+
+    const goods = useGoods();
+    const goodsOptions = goods
+        ?.filter(good => !food?.some(food => food.good === good))
+        ?.map(good => ({ label: good.name, value: good })) || [];
 
     const createFood = useCreateFood();
     const onSubmitFood = useCallback(
@@ -48,7 +51,7 @@ export const FoodForm: React.FC = () => {
             <Form onSubmit={onSubmitFood}>
                 {({ handleSubmit }) => (
                     <form className={cnFoodPage('Form')} onSubmit={handleSubmit}>
-                        <Field name="name">
+                        <Field name="name" validate={requiredValidator()}>
                             {({ input }) => (
                                 <InputText className={cnFoodPage('Input')}
                                            placeholder="Название" {...input} />
@@ -59,7 +62,7 @@ export const FoodForm: React.FC = () => {
                             {({ input }) => (
                                 <Dropdown className={cnFoodPage('Input')}
                                           value={input.value} onChange={input.onChange}
-                                          placeholder="Ид_товара" showClear={input.value?.id !== undefined} filter
+                                          placeholder="Товар" showClear={input.value?.id !== undefined} filter
                                           options={goodsOptions} />
                             )}
                         </Field>

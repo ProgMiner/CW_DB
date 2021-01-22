@@ -18,16 +18,10 @@ const cnAllergensPage = cn('AllergensPage');
 export const AllergensPage: React.FC = () => (
     <Page className={cnAllergensPage()} title="Аллергены">
         <MainLayout className={cnAllergensPage('Layout')}>
+            <FormTablePanel className={cnAllergensPage('AllergensPanel')}
+                            form={<AllergenForm/>} table={<AllergensTable/>} />
 
-                    <FormTablePanel
-                        form={ <AllergenForm/> }
-                        table= {<AllergensTable/>}
-                    />
-
-                    <FormTablePanel
-                    form={<CatAllergenForm/>}
-                    table={<CatAllergensTable/>}
-                    />
+            <FormTablePanel form={<CatAllergenForm/>} table={<CatAllergensTable/>} />
         </MainLayout>
     </Page>
 );

@@ -6,7 +6,7 @@ import { Button } from 'primereact/button';
 import { InputNumber } from 'primereact/inputnumber';
 
 import { useCreateClient } from '../../hooks/useCreateClient';
-import { composeValidators, minMaxValidator, requiredValidator } from '../../utils/validators';
+import { composeValidators, greaterLowerValidator, requiredValidator } from '../../utils/validators';
 
 
 const cnClientsPage = cn('ClientsPage');
@@ -36,7 +36,10 @@ export const ClientForm: React.FC = () => {
 
                     <Field<number> name="discount"
                                    initialValue={undefined}
-                                   validate={composeValidators(requiredValidator(), minMaxValidator(0, 100))}>
+                                   validate={composeValidators(
+                                       requiredValidator(),
+                                       greaterLowerValidator(0, 100)
+                                   )}>
                         {({ input }) => (
                             <InputNumber className={cnClientsPage('Input')}
                                          placeholder="Размер скидки"

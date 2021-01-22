@@ -1,13 +1,7 @@
 
-.CatPreferencesPage-FormContainer {
-    display: flex;
-    width: 100%;
-    min-height: 0;
-    justify-content: center;
-}
-
 .CatPreferencesPage-Form {
     display: flex;
+    min-height: 0;
     margin-bottom: 10px;
     justify-content: center;
 }
