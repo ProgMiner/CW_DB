@@ -6,7 +6,7 @@ import { Cat } from '../models/cat';
 
 
 export const useCreateCat = () => {
-    const { state: { clients }, dispatch } = useStore();
+    const { dispatch } = useStore();
 
     return useCallback(async (cat: Cat) => {
         const newCat = await catsApi.createCat(cat);
@@ -14,5 +14,5 @@ export const useCreateCat = () => {
         dispatch(store => store.cats?.unshift(newCat));
 
         return newCat;
-    }, [clients, dispatch]);
+    }, [dispatch]);
 };

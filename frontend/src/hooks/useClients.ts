@@ -1,5 +1,4 @@
 import { useStore } from '../store';
-import { Client } from '../models/client';
 import { clientsApi } from '../api/clients';
 
 

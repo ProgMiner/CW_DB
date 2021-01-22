@@ -9,7 +9,6 @@ import { useCreateAllergen } from '../../hooks/useCreateAllergen';
 import { useAllergens } from '../../hooks/useAllergens';
 import { useCats } from '../../hooks/useCats';
 import { useAddCatAllergen } from '../../hooks/useAddCatAllergen';
-import { useBreeds } from '../../hooks/useBreeds';
 
 
 const cnAllergensPage = cn('AllergensPage');

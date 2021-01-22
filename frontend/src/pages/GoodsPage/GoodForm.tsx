@@ -56,7 +56,7 @@ export const GoodForm: React.FC = () => {
                         )}
                     </Field>
 
-                    <Button type="submit" label="Добавить"/>
+                    <Button type="submit" label="Добавить" />
                 </form>
             )}
         </Form>

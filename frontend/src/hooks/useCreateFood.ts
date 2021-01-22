@@ -6,7 +6,7 @@ import { foodApi } from '../api/food';
 
 
 export const useCreateFood = () => {
-    const { state: { goods }, dispatch } = useStore();
+    const { dispatch } = useStore();
 
     return useCallback(async (food: Food) => {
         const newFood = await foodApi.createFood(food);
@@ -14,5 +14,5 @@ export const useCreateFood = () => {
         dispatch(store => store.food?.unshift(newFood));
 
         return newFood;
-    }, [goods, dispatch]);
+    }, [dispatch]);
 };
