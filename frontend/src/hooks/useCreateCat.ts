@@ -1,9 +1,7 @@
 import { useCallback } from 'react';
 
 import { useStore } from '../store';
-import { Sex } from '../models/sex';
 import { catsApi } from '../api/cats';
-import { Breed } from '../models/breed';
 import { Cat } from '../models/cat';
 
 

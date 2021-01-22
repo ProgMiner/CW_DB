@@ -12,7 +12,7 @@ export const BreedsTable: React.FC = () => {
     const breeds = useBreeds();
 
     return (
-        <DataTable value={breeds ?? []} className={cnBreedsPage('Table', ['p-datatable-sm'])}>
+        <DataTable value={breeds ?? []} className={cnBreedsPage('Table', ['p-datatable-sm'])} paginator rows={10}>
             <Column field="id" header="#" />
             <Column field="name" header="Название" />
             <Column field="price" header="Стоимость" />

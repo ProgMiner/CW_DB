@@ -6,12 +6,12 @@
 }
 
 .FormTablePanel-FormContainer {
-    display: flex;
+    display: flow-root;
     align-items: center;
     width: 285px;
     min-width: 285px;
     min-height: 0;
-    margin: 0 60px 0 25px;
+    margin: 0 50px 0 0;
 }
 
 .FormTablePanel-TableContainer {

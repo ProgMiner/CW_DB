@@ -30,7 +30,7 @@ const assertObject = <T>(mapper: (value: Record<string, unknown>) => T) => {
         }
 
         return mapper(value as Record<string, unknown>);
-    }
+    };
 };
 
 export const mapper: Mapper = {

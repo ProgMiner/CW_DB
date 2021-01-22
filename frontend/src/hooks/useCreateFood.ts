@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 
 import { useStore } from '../store';
-import { Food } from '../models/food';
 import { foodApi } from '../api/food';
 
 
@@ -20,7 +19,7 @@ export const useCreateFood = () => {
             name,
             good: goods?.find(({ id }) => id === goodId),
             allergens: []
-        })
+        });
 
         dispatch(store => store.food?.unshift(food));
 

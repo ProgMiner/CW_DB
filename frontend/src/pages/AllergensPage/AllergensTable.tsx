@@ -3,18 +3,19 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { cn } from '@bem-react/classname';
 
+
 import { useAllergens } from '../../hooks/useAllergens';
 
 
 const cnAllergensPage = cn('AllergensPage');
 
 export const AllergensTable: React.FC = () => {
-    const allergens  = useAllergens();
+    const allergens = useAllergens();
 
     return (
-        <DataTable value={allergens ?? []} className={cnAllergensPage('Table', ['p-datatable-sm'])}>
+        <DataTable value={allergens ?? []} className={cnAllergensPage('Table', ['p-datatable-sm'])} paginator rows={10}>
             <Column field="id" header="#" />
-            <Column field="name" header="Название" />
+            <Column field="name" header="Наименование" />
         </DataTable>
     );
 };

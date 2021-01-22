@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 
 import { useStore } from '../store';
-import { Allergen } from '../models/allergen';
 import { allergensApi } from '../api/allergens';
 
 
@@ -17,7 +16,7 @@ export const useCreateAllergen = () => {
 
         const allergen = await allergensApi.createAllergen({
             name
-        })
+        });
 
         dispatch(store => store.allergens?.unshift(allergen));
 

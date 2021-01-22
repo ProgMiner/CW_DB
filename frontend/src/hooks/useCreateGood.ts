@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 
 import { useStore } from '../store';
-import { Good } from '../models/good';
 import { goodsApi } from '../api/goods';
 
 
@@ -21,7 +20,7 @@ export const useCreateGood = () => {
             name,
             price,
             type
-        })
+        });
 
         dispatch(store => store.goods?.unshift(good));
 

@@ -10,7 +10,7 @@ import { Cat } from '../../models/cat';
 const cnCatsPage = cn('CatsPage');
 
 const breedColumn = (cat: Cat) => cat.breed?.name ?? 'без породы';
-const birthdayColumn = (cat: Cat) => cat.birthday?.toLocaleDateString() ?? 'неизвестно'
+const birthdayColumn = (cat: Cat) => cat.birthday?.toLocaleDateString() ?? 'неизвестно';
 const sexColumn = (cat: Cat) => (
     <div className={cnCatsPage('SexIcon', { [cat.sex.toLowerCase()]: true })}/>
 );

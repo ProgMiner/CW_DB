@@ -18,7 +18,7 @@ export const useCreateClient = () => {
         const client = await clientsApi.createClient({
             name,
             discount
-        })
+        });
 
         dispatch(store => store.clients?.unshift(client));
 
