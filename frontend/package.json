@@ -27,7 +27,8 @@
         "@types/lodash.clonedeep": "^4.5.6",
         "@types/react-helmet": "^6.1.0",
         "@types/react-router-dom": "^5.1.7",
-        "shx": "^0.3.3"
+        "shx": "^0.3.3",
+        "utility-types": "^3.10.0"
     },
     "scripts": {
         "start": "react-scripts start",

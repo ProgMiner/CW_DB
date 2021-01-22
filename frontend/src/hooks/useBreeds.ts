@@ -1,12 +1,11 @@
 import { useStore } from '../store';
-import { Breed } from '../models/breed';
-import {breedsApi} from '../api/breeds';
+import { breedsApi } from '../api/breeds';
+
 
 let loading = false;
 
 export const useBreeds = () => {
     const { state: { breeds }, dispatch } = useStore();
-
 
     if (!loading && breeds === null) {
         loading = true;
@@ -17,7 +16,6 @@ export const useBreeds = () => {
 
         return null;
     }
-
 
     return breeds;
 };

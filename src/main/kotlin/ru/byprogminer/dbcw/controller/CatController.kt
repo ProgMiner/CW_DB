@@ -6,7 +6,7 @@ import ru.byprogminer.dbcw.service.CatService
 
 @RestController
 @RequestMapping("/api/v1/cat")
-class CatsController(
+class CatController(
     private val service: CatService
 ) {
 

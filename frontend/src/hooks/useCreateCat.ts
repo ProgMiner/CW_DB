@@ -2,11 +2,12 @@ import { useStore } from '../store';
 import { Sex } from '../models/sex';
 import { useCallback } from 'react';
 import { catsApi } from '../api/cats';
+import { Breed } from '../models/breed';
 
 
 interface CreateCatParams {
     name: string;
-    breedId?: number;
+    breed?: Breed;
     birthday?: Date;
     sex: Sex;
     color: number;
@@ -14,14 +15,14 @@ interface CreateCatParams {
 }
 
 export const useCreateCat = () => {
-    const { state: { breeds, clients }, dispatch } = useStore();
+    const { state: { clients }, dispatch } = useStore();
 
-    return useCallback(async ({ name, breedId, birthday, sex, color, ownerId }: CreateCatParams) => {
-        console.log({ name, breedId, birthday, sex, color, ownerId });
+    return useCallback(async ({ name, breed, birthday, sex, color, ownerId }: CreateCatParams) => {
+        console.log({ name, breed, birthday, sex, color, ownerId });
 
         const cat = await catsApi.createCat({
             name,
-            breed: breeds?.find(({ id }) => id === breedId),
+            breed,
             birthday,
             sex,
             color,
@@ -33,5 +34,5 @@ export const useCreateCat = () => {
         dispatch(store => store.cats?.unshift(cat));
 
         return cat;
-    }, [breeds, clients, dispatch]);
+    }, [clients, dispatch]);
 };

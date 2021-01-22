@@ -20,7 +20,7 @@ interface Models {
 interface Mapper {
     to: { [K in keyof Models]: (value: unknown) => Models[K] };
     from: { [K in keyof Models]: (value: Models[K]) => unknown };
-    toList: <T>(mapper: keyof Models, value: unknown) => T[];
+    toList: <K extends keyof Models>(mapper: K, value: unknown) => Models[K][];
 }
 
 const assertObject = <T>(mapper: (value: Record<string, unknown>) => T) => {
@@ -39,7 +39,7 @@ export const mapper: Mapper = {
             id: id as number,
             name: name as string,
             breed: breed ? mapper.to.breed(breed) : undefined,
-            birthday: new Date(birthday as string),
+            birthday: birthday ? new Date(birthday as string) : undefined,
             sex: sex as Sex,
             color: color as number,
             owner: owner ? mapper.to.client(owner) : undefined,
@@ -81,13 +81,12 @@ export const mapper: Mapper = {
         allergen: allergen => allergen
     },
 
-    // @ts-ignore
-    toList: (mapperType, value) => {
+    toList: <K extends keyof Models>(mapperType: K, value: unknown): Models[K][] => {
         if (!Array.isArray(value)) {
             throw new ApiError('NOT_AN_ARRAY');
         }
 
-        const mapperFunction = mapper.to[mapperType];
+        const mapperFunction = mapper.to[mapperType as K] as (value: unknown) => Models[K];
         return value.map(mapperFunction);
     }
 };

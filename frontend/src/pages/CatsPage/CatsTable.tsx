@@ -7,8 +7,8 @@ import { Cat } from '../../models/cat';
 import { cn } from '@bem-react/classname';
 
 
-const breedColumn = (cat: Cat) => cat.breed?.name || '-';
-const birthdayColumn = (cat: Cat) => cat.birthday?.toLocaleDateString()
+const breedColumn = (cat: Cat) => cat.breed?.name ?? 'без породы';
+const birthdayColumn = (cat: Cat) => cat.birthday?.toLocaleDateString() ?? 'неизвестно'
 const colorColumn = (cat: Cat) => (
     <div style={{
         width: '20px',
@@ -16,7 +16,7 @@ const colorColumn = (cat: Cat) => (
         background: '#' + (`000000${cat.color.toString(16)}`).slice(-6)
     }} />
 );
-const ownerColumn = (cat: Cat) => cat.owner?.name || '-';
+const ownerColumn = (cat: Cat) => cat.owner?.name ?? 'нет';
 
 const cnCatsPage = cn('CatsPage');
 
@@ -24,13 +24,13 @@ export const CatsTable: React.FC = () => {
     const cats = useCats();
 
     return (
-        <DataTable value={cats ?? []} className={cnCatsPage('Table', ['p-datatable-sm'])}>
-            <Column field="id" header="#" />
-            <Column field="name" header="Имя" />
-            <Column body={breedColumn} header="Порода" />
+        <DataTable className={cnCatsPage('Table', ['p-datatable-sm'])} value={cats ?? []} paginator rows={10}>
+            <Column field="id" header="#" headerStyle={{ width: '50px' }} />
+            <Column field="name" header="Имя" headerStyle={{ width: '150px' }} />
+            <Column body={breedColumn} header="Порода" headerStyle={{ width: '150px' }} />
             <Column body={birthdayColumn} header="День рождения" headerStyle={{ width: '150px' }} />
-            <Column field="sex" header="Пол" />
-            <Column body={colorColumn} header="Цвет" />
+            <Column field="sex" header="Пол" headerStyle={{ width: '50px' }} />
+            <Column body={colorColumn} header="Цвет" headerStyle={{ width: '50px' }} />
             <Column body={ownerColumn} header="Хозяин" />
         </DataTable>
     );

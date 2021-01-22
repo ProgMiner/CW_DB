@@ -15,8 +15,7 @@ import { useAddFoodAllergen } from '../../hooks/useAddFoodAllergen';
 const cnFoodPage = cn('FoodPage');
 
 export const FoodForm: React.FC = () => {
-
-    const allergens  = useAllergens();
+    const allergens = useAllergens();
     const allergensOptions = allergens?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
     const goods = useGoods();
@@ -42,7 +41,6 @@ export const FoodForm: React.FC = () => {
         },
         [createFoodAllergen]
     );
-
 
     return (
         <div>

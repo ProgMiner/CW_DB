@@ -1,6 +1,5 @@
 import { useStore } from '../store';
 import { catsApi } from '../api/cats';
-import { useState } from 'react';
 
 
 let loading = false;

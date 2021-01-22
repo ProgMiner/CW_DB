@@ -12,13 +12,15 @@ import { SexInput } from '../../components/SexInput/SexInput';
 import { useClients } from '../../hooks/useClients';
 import { useCreateCat } from '../../hooks/useCreateCat';
 import { Sex } from '../../models/sex';
+import { Breed } from '../../models/breed';
+import { requiredValidator } from '../../utils/validators';
 
 
 const cnCatsPage = cn('CatsPage');
 
 export const CatForm: React.FC = () => {
     const breeds = useBreeds();
-    const breedsOptions = breeds?.map(({ id, name }) => ({ label: name, value: id })) || [];
+    const breedsOptions = breeds?.map(breed => ({ label: breed.name, value: breed })) || [];
 
     const clients = useClients();
     const clientsOptions = clients?.map(({ id, name }) => ({ label: name, value: id })) || [];
@@ -26,7 +28,7 @@ export const CatForm: React.FC = () => {
     const createCat = useCreateCat();
     const onSubmit = useCallback(
         async ({ name, breed, birthday, sex, color, owner }, form) => {
-            await createCat({ name, breedId: breed, birthday, sex, color: parseInt(color, 16), ownerId: owner });
+            await createCat({ name, breed, birthday, sex, color: parseInt(color, 16), ownerId: owner });
             setTimeout(() => form.reset());
         },
         [createCat]
@@ -36,18 +38,18 @@ export const CatForm: React.FC = () => {
         <Form onSubmit={onSubmit}>
             {({ handleSubmit }) => (
                 <form className={cnCatsPage('Form')} onSubmit={handleSubmit}>
-                    <Field name="name">
+                    <Field name="name" validate={requiredValidator()}>
                         {({ input }) => (
                             <InputText className={cnCatsPage('Input')}
                                        placeholder="Имя" {...input} />
                         )}
                     </Field>
 
-                    <Field name="breed">
+                    <Field<Breed | undefined> name="breed">
                         {({ input }) => (
                             <Dropdown className={cnCatsPage('Input')}
                                       value={input.value} onChange={input.onChange}
-                                      placeholder="Порода" showClear={input.value} filter
+                                      placeholder="Порода" showClear={input.value !== undefined} filter
                                       options={breedsOptions} />
                         )}
                     </Field>

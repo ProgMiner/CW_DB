@@ -1,13 +1,19 @@
 package ru.byprogminer.dbcw.entity
 
-import org.springframework.data.annotation.Id
-import org.springframework.data.relational.core.mapping.MappedCollection
+import javax.persistence.*
 
+
+@Entity
 data class Food(
-    @Id val id: Int?,
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "food_id_seq")
+    @SequenceGenerator(name = "food_id_seq", sequenceName = "food_id_seq", allocationSize = 1)
+    val id: Int?,
+
     val name: String,
 
-    @MappedCollection
-    val good: Good
-    ,
-)
+    @OneToOne
+    val good: Good?,
+) {
+
+    constructor(): this(null, "", null)
+}
