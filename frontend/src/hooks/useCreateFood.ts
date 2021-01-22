@@ -1,7 +1,8 @@
+import { useCallback } from 'react';
+
 import { useStore } from '../store';
 import { Food } from '../models/food';
-import {useCallback} from 'react';
-import {foodApi} from '../api/food';
+import { foodApi } from '../api/food';
 
 
 interface CreateFoodParams {
@@ -12,8 +13,8 @@ interface CreateFoodParams {
 export const useCreateFood = () => {
     const { state: { goods }, dispatch } = useStore();
 
-    return useCallback(async ({ name, goodId}: CreateFoodParams) => {
-        console.log({ name, goodId});
+    return useCallback(async ({ name, goodId }: CreateFoodParams) => {
+        console.log({ name, goodId });
 
         const food = await foodApi.createFood({
             name,

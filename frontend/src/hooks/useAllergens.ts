@@ -1,6 +1,6 @@
 import { useStore } from '../store';
 import { Allergen } from '../models/allergen';
-import {allergensApi} from '../api/allergens';
+import { allergensApi } from '../api/allergens';
 
 
 let loading = false;

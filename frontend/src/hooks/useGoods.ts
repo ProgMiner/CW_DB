@@ -1,7 +1,6 @@
 import { useStore } from '../store';
-import { Good } from '../models/good';
-import {catsApi} from '../api/cats';
-import {goodsApi} from '../api/goods';
+import { goodsApi } from '../api/goods';
+
 
 let loading = false;
 

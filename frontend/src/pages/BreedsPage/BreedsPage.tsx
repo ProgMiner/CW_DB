@@ -5,9 +5,9 @@ import { MainLayout } from '../../layouts/MainLayout/MainLayout';
 import { Page } from '../../components/Page';
 import { BreedForm } from './BreedForm';
 import { BreedsTable } from './BreedsTable';
+import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 
 import './BreedsPage.css';
-import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 
 
 const cnBreedsPage = cn('BreedsPage');

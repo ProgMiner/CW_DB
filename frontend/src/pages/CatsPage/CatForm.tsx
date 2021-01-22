@@ -14,6 +14,7 @@ import { useCreateCat } from '../../hooks/useCreateCat';
 import { Sex } from '../../models/sex';
 import { Breed } from '../../models/breed';
 import { requiredValidator } from '../../utils/validators';
+import { Client } from '../../models/client';
 
 
 const cnCatsPage = cn('CatsPage');
@@ -23,12 +24,22 @@ export const CatForm: React.FC = () => {
     const breedsOptions = breeds?.map(breed => ({ label: breed.name, value: breed })) || [];
 
     const clients = useClients();
-    const clientsOptions = clients?.map(({ id, name }) => ({ label: name, value: id })) || [];
+    const clientsOptions = clients?.map(client => ({ label: client.name, value: client })) || [];
 
     const createCat = useCreateCat();
     const onSubmit = useCallback(
         async ({ name, breed, birthday, sex, color, owner }, form) => {
-            await createCat({ name, breed, birthday, sex, color: parseInt(color, 16), ownerId: owner });
+            await createCat({
+                name,
+                breed,
+                birthday,
+                sex,
+                color: parseInt(color, 16),
+                owner,
+                allergens: [],
+                preferences: []
+            });
+
             setTimeout(() => form.reset());
         },
         [createCat]
@@ -49,7 +60,7 @@ export const CatForm: React.FC = () => {
                         {({ input }) => (
                             <Dropdown className={cnCatsPage('Input')}
                                       value={input.value} onChange={input.onChange}
-                                      placeholder="Порода" showClear={input.value !== undefined} filter
+                                      placeholder="Порода" showClear={input.value?.id !== undefined} filter
                                       options={breedsOptions} />
                         )}
                     </Field>
@@ -79,11 +90,11 @@ export const CatForm: React.FC = () => {
                         )}
                     </Field>
 
-                    <Field name="owner">
+                    <Field<Client> name="owner">
                         {({ input }) => (
                             <Dropdown className={cnCatsPage('Input')}
                                       value={input.value} onChange={input.onChange}
-                                      placeholder="Хозяин" showClear={input.value} filter
+                                      placeholder="Хозяин" showClear={input.value?.id !== undefined} filter
                                       options={clientsOptions} />
                         )}
                     </Field>

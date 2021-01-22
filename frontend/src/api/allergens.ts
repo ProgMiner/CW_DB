@@ -1,6 +1,7 @@
 import { doApiRequest } from './doApiRequest';
 import { mapper } from './mapper';
-import {Allergen} from '../models/allergen';
+import { Allergen } from '../models/allergen';
+
 
 export const allergensApi = {
 

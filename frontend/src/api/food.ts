@@ -1,6 +1,7 @@
 import { doApiRequest } from './doApiRequest';
 import { mapper } from './mapper';
-import {Food} from '../models/food';
+import { Food } from '../models/food';
+
 
 export const foodApi = {
 

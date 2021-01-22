@@ -2,6 +2,7 @@ import { Cat } from '../models/cat';
 import { doApiRequest } from './doApiRequest';
 import { mapper } from './mapper';
 
+
 export const catsApi = {
 
     getCats: async (): Promise<Cat[]> => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { cn } from '@bem-react/classname';
 
 import { useBreeds } from '../../hooks/useBreeds';
-import { cn } from '@bem-react/classname';
 
 
 const cnBreedsPage = cn('BreedsPage');

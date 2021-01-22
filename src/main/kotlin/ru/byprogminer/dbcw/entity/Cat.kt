@@ -9,20 +9,20 @@ class Cat(
     @SequenceGenerator(name = "cat_id_seq", sequenceName = "cat_id_seq", allocationSize = 1)
     val id: Long?,
 
-    val name: String,
+    var name: String,
 
     @ManyToOne
-    val breed: CatBreed?,
+    var breed: CatBreed?,
 
-    val birthday: LocalDateTime?,
+    var birthday: LocalDateTime?,
 
     @Enumerated(EnumType.STRING)
-    val sex: Sex,
+    var sex: Sex,
 
-    val color: Int,
+    var color: Int,
 
     @ManyToOne
-    val owner: Client?
+    var owner: Client?
 ) {
 
     constructor(): this(null, "", null, null, Sex.M, 0, null)

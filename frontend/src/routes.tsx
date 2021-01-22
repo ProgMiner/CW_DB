@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+
 import { CatsPage } from './pages/CatsPage/CatsPage';
 import { BreedsPage } from './pages/BreedsPage/BreedsPage';
 import { ClientsPage } from './pages/ClientPage/ClientsPage';

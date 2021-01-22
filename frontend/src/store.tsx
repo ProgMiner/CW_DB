@@ -8,6 +8,7 @@ import { Allergen } from './models/allergen';
 import { Food } from './models/food';
 import { Good } from './models/good';
 
+
 export interface Store {
     cats: Cat[] | null;
     breeds: Breed[] | null;

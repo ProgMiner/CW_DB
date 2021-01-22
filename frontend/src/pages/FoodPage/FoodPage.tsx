@@ -3,11 +3,11 @@ import { cn } from '@bem-react/classname';
 
 import { MainLayout } from '../../layouts/MainLayout/MainLayout';
 import { Page } from '../../components/Page';
-
-import './FoodPage.css';
 import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 import { FoodForm } from './FoodForm';
 import { FoodTable } from './FoodTable';
+
+import './FoodPage.css';
 
 
 const cnFoodPage = cn('FoodPage');

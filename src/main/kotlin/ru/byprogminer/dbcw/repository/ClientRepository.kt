@@ -5,4 +5,4 @@ import org.springframework.stereotype.Repository
 import ru.byprogminer.dbcw.entity.Client
 
 @Repository
-interface ClientRepository : JpaRepository<Client, Long>
+interface ClientRepository : JpaRepository<Client, Int>

@@ -1,24 +1,24 @@
 import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { cn } from '@bem-react/classname';
 
 import { useCats } from '../../hooks/useCats';
 import { Cat } from '../../models/cat';
-import { cn } from '@bem-react/classname';
 
+
+const cnCatsPage = cn('CatsPage');
 
 const breedColumn = (cat: Cat) => cat.breed?.name ?? 'без породы';
 const birthdayColumn = (cat: Cat) => cat.birthday?.toLocaleDateString() ?? 'неизвестно'
+const sexColumn = (cat: Cat) => (
+    <div className={cnCatsPage('SexIcon', { [cat.sex.toLowerCase()]: true })}/>
+);
 const colorColumn = (cat: Cat) => (
-    <div style={{
-        width: '20px',
-        height: '20px',
-        background: '#' + (`000000${cat.color.toString(16)}`).slice(-6)
-    }} />
+    <div className={cnCatsPage('Color')}
+         style={{ background: '#' + (`000000${cat.color.toString(16)}`).slice(-6) }} />
 );
 const ownerColumn = (cat: Cat) => cat.owner?.name ?? 'нет';
-
-const cnCatsPage = cn('CatsPage');
 
 export const CatsTable: React.FC = () => {
     const cats = useCats();
@@ -29,7 +29,7 @@ export const CatsTable: React.FC = () => {
             <Column field="name" header="Имя" headerStyle={{ width: '150px' }} />
             <Column body={breedColumn} header="Порода" headerStyle={{ width: '150px' }} />
             <Column body={birthdayColumn} header="День рождения" headerStyle={{ width: '150px' }} />
-            <Column field="sex" header="Пол" headerStyle={{ width: '50px' }} />
+            <Column body={sexColumn} header="Пол" headerStyle={{ width: '50px' }} />
             <Column body={colorColumn} header="Цвет" headerStyle={{ width: '50px' }} />
             <Column body={ownerColumn} header="Хозяин" />
         </DataTable>

@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import ru.byprogminer.dbcw.entity.Cat
 import ru.byprogminer.dbcw.repository.CatRepository
+import ru.byprogminer.dbcw.repository.ClientRepository
 
 @Service
 @Transactional
 class CatService(
     private val repository: CatRepository,
+    private val clientRepository: ClientRepository,
     private val jdbcTemplate: JdbcTemplate
 ) {
 
@@ -22,6 +24,14 @@ class CatService(
     fun createCat(cat: Cat): Cat {
         val id = SimpleJdbcCall(jdbcTemplate).withFunctionName("create_cat")
             .executeFunction(Long::class.java, cat.name, cat.breed?.name, cat.birthday, cat.sex, cat.color)
+
+        val owner = cat.owner
+        if (owner?.id != null) {
+            val newCat = repository.findById(id).get()
+
+            newCat.owner = clientRepository.getOne(owner.id)
+            return newCat
+        }
 
         return repository.findById(id).get()
     }

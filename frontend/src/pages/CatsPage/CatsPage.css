@@ -33,6 +33,24 @@
     margin-bottom: 10px;
 }
 
+.CatsPage-Color {
+    border-radius: 50%;
+}
+
+.CatsPage-Color, .CatsPage-SexIcon {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+}
+
+.CatsPage-SexIcon_m {
+    background-image: url('/src/assets/icons/male.svg');
+}
+
+.CatsPage-SexIcon_f {
+    background-image: url('/src/assets/icons/female.svg');
+}
+
 .CatsPage-Table .p-column-title {
     white-space: nowrap;
 }

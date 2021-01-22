@@ -3,11 +3,11 @@ import { cn } from '@bem-react/classname';
 
 import { MainLayout } from '../../layouts/MainLayout/MainLayout';
 import { Page } from '../../components/Page';
-
-import './CatPreferencesPage.css';
 import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 import { CatPreferenceForm } from './CatPreferenceForm';
 import { CatPreferencesTable } from './CatPreferencesTable';
+
+import './CatPreferencesPage.css';
 
 
 const cnCatPreferencesPage = cn('CatPreferencesPage');

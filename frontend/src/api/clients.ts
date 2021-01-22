@@ -1,6 +1,7 @@
 import { doApiRequest } from './doApiRequest';
 import { mapper } from './mapper';
-import {Client} from '../models/client';
+import { Client } from '../models/client';
+
 
 export const clientsApi = {
 

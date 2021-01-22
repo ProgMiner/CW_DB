@@ -5,9 +5,9 @@ import { MainLayout } from '../../layouts/MainLayout/MainLayout';
 import { Page } from '../../components/Page';
 import { ClientForm } from './ClientForm';
 import { ClientsTable } from './ClientsTable';
+import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 
 import './ClientsPage.css';
-import { VerticalFormTablePanel } from '../../components/VerticalFormTablePanel/VerticalFormTablePanel';
 
 
 const cnClientsPage = cn('ClientsPage');

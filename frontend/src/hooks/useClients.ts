@@ -1,6 +1,6 @@
 import { useStore } from '../store';
 import { Client } from '../models/client';
-import {clientsApi} from '../api/clients';
+import { clientsApi } from '../api/clients';
 
 
 let loading = false;

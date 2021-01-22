@@ -27,16 +27,66 @@
         "@types/lodash.clonedeep": "^4.5.6",
         "@types/react-helmet": "^6.1.0",
         "@types/react-router-dom": "^5.1.7",
+        "eslint-plugin-import": "^2.22.1",
         "shx": "^0.3.3",
         "utility-types": "^3.10.0"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "deploy": "shx rm -rf ../src/main/resources/static && shx cp -r build ../src/main/resources/static"
+        "deploy": "shx rm -rf ../src/main/resources/static && shx cp -r build ../src/main/resources/static",
+        "lint": "eslint --ext .ts --ext .tsx --ignore-path .gitignore --ignore-pattern \"!**/.*\" . --fix"
     },
     "eslintConfig": {
-        "extends": "react-app"
+        "extends": "react-app",
+        "rules": {
+            "array-bracket-spacing": [
+                "error",
+                "never"
+            ],
+            "object-curly-spacing": [
+                "error",
+                "always"
+            ],
+            "import/order": [
+                "error",
+                {
+                    "groups": [
+                        [
+                            "builtin",
+                            "external"
+                        ],
+                        [
+                            "index",
+                            "sibling",
+                            "parent"
+                        ],
+                        [
+                            "unknown"
+                        ]
+                    ],
+                    "newlines-between": "always"
+                }
+            ],
+            "import/newline-after-import": [
+                "error",
+                {
+                    "count": 2
+                }
+            ],
+            "no-unused-vars": "off",
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                {
+                    "vars": "local",
+                    "args": "after-used",
+                    "ignoreRestSiblings": false,
+                    "argsIgnorePattern": "^_"
+                }
+            ],
+            "@typescript-eslint/no-explicit-any": "error",
+            "semi": ["error", "always"]
+        }
     },
     "browserslist": {
         "production": [

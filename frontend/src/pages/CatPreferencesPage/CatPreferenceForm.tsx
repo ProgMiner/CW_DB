@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 import { Field, Form } from 'react-final-form';
 import { cn } from '@bem-react/classname';
 import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
 
 import { useCats } from '../../hooks/useCats';
-import { Dropdown } from 'primereact/dropdown';
 import { useFood } from '../../hooks/useFood';
 import { useAddCatPreference } from '../../hooks/useAddCatPreference';
 

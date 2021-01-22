@@ -1,7 +1,8 @@
+import { useCallback } from 'react';
+
 import { useStore } from '../store';
 import { Allergen } from '../models/allergen';
-import {useCallback} from 'react';
-import {allergensApi} from '../api/allergens';
+import { allergensApi } from '../api/allergens';
 
 
 interface CreateAllergenParams {
@@ -11,8 +12,8 @@ interface CreateAllergenParams {
 export const useCreateAllergen = () => {
     const { dispatch } = useStore();
 
-    return useCallback(async ({ name}: CreateAllergenParams) => {
-        console.log({ name});
+    return useCallback(async ({ name }: CreateAllergenParams) => {
+        console.log({ name });
 
         const allergen = await allergensApi.createAllergen({
             name

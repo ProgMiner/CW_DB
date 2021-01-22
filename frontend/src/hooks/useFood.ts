@@ -1,6 +1,6 @@
 import { useStore } from '../store';
-import { Food } from '../models/food';
-import {foodApi} from '../api/food';
+import { foodApi } from '../api/food';
+
 
 let loading = false;
 

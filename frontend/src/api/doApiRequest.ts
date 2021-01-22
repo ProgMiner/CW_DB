@@ -1,5 +1,6 @@
 import { ApiError } from './apiError';
 
+
 const apiUrl = '//localhost:8080/api/v1';
 
 export const doApiRequest = async (resource: string, fetchParams?: RequestInit): Promise<unknown> => {

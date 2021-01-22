@@ -1,7 +1,8 @@
+import { useCallback } from 'react';
+
 import { useStore } from '../store';
 import { Good } from '../models/good';
-import {useCallback} from 'react';
-import {goodsApi} from '../api/goods';
+import { goodsApi } from '../api/goods';
 
 
 interface CreateGoodParams {

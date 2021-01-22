@@ -25,9 +25,9 @@
 }
 
 .SexInput-Icon_m {
-    background-image: url('./icons/male.svg');
+    background-image: url('/src/assets/icons/male.svg');
 }
 
 .SexInput-Icon_f {
-    background-image: url('./icons/female.svg');
+    background-image: url('/src/assets/icons/female.svg');
 }
