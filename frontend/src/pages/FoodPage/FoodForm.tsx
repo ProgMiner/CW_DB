@@ -10,6 +10,7 @@ import { useCreateFood } from '../../hooks/useCreateFood';
 import { useGoods } from '../../hooks/useGoods';
 import { useFood } from '../../hooks/useFood';
 import { useAddFoodAllergen } from '../../hooks/useAddFoodAllergen';
+import { Good } from '../../models/good';
 
 
 const cnFoodPage = cn('FoodPage');
@@ -19,7 +20,7 @@ export const FoodForm: React.FC = () => {
     const allergensOptions = allergens?.map(({ id, name }) => ({ label: name, value: id })) || [];
 
     const goods = useGoods();
-    const goodsOptions = goods?.map(({ id, name }) => ({ label: name, value: id })) || [];
+    const goodsOptions = goods?.map(good => ({ label: good.name, value: good })) || [];
 
     const food = useFood();
     const foodOptions = food?.map(({ id, name }) => ({ label: name, value: id })) || [];
@@ -27,7 +28,7 @@ export const FoodForm: React.FC = () => {
     const createFood = useCreateFood();
     const onSubmitFood = useCallback(
         async ({ name, good }, form) => {
-            await createFood({ name, goodId: good });
+            await createFood({ name, good, allergens: [] });
             setTimeout(() => form.reset());
         },
         [createFood]
@@ -54,11 +55,11 @@ export const FoodForm: React.FC = () => {
                             )}
                         </Field>
 
-                        <Field name="good">
+                        <Field<Good> name="good">
                             {({ input }) => (
                                 <Dropdown className={cnFoodPage('Input')}
                                           value={input.value} onChange={input.onChange}
-                                          placeholder="Ид_товара" showClear={input.value} filter
+                                          placeholder="Ид_товара" showClear={input.value?.id === undefined} filter
                                           options={goodsOptions} />
                             )}
                         </Field>

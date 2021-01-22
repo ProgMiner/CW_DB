@@ -2,26 +2,17 @@ import { useCallback } from 'react';
 
 import { useStore } from '../store';
 import { clientsApi } from '../api/clients';
+import { Client } from '../models/client';
 
-
-interface CreateClientParams {
-    name: string;
-    discount: number;
-}
 
 export const useCreateClient = () => {
     const { dispatch } = useStore();
 
-    return useCallback(async ({ name, discount }: CreateClientParams) => {
-        console.log({ name, discount });
+    return useCallback(async (client: Client) => {
+        const newClient = await clientsApi.createClient(client);
 
-        const client = await clientsApi.createClient({
-            name,
-            discount
-        });
+        dispatch(store => store.clients?.unshift(newClient));
 
-        dispatch(store => store.clients?.unshift(client));
-
-        return client;
+        return newClient;
     }, [dispatch]);
 };

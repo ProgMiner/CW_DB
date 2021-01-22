@@ -1,12 +1,7 @@
 
-.BreedsPage-FormContainer {
-    display: flex;
-    width: 100%;
-    min-height: 0;
-}
-
 .BreedsPage-Form {
     display: flex;
+    width: 100%;
     min-height: 0;
     flex-grow: 1;
 }

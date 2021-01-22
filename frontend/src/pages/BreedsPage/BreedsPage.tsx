@@ -15,14 +15,7 @@ const cnBreedsPage = cn('BreedsPage');
 export const BreedsPage: React.FC = () => (
     <Page className={cnBreedsPage()} title="Породы">
         <MainLayout className={cnBreedsPage('Layout')}>
-            <VerticalFormTablePanel
-                form={(
-                    <div className={cnBreedsPage('FormContainer')}>
-                        <BreedForm />
-                    </div>
-                )}
-                table={<BreedsTable />}
-            />
+            <VerticalFormTablePanel form={<BreedForm />} table={<BreedsTable />} />
         </MainLayout>
     </Page>
 );

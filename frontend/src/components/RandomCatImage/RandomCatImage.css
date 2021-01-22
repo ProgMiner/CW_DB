@@ -1,4 +1,15 @@
 
 .RandomCatImage {
-    background: url('https://thiscatdoesnotexist.com/') 50% 50% / cover no-repeat;
+    position: relative;
+}
+
+.RandomCatImage-Image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
 }

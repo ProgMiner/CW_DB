@@ -17,7 +17,7 @@ export const ClientForm: React.FC = () => {
 
     const onSubmit = useCallback(
         async ({ name, discount }, form) => {
-            await createClient({ name, discount });
+            await createClient({ name, discount: discount / 100 });
             setTimeout(() => form.reset());
         },
         [createClient]
@@ -34,15 +34,15 @@ export const ClientForm: React.FC = () => {
                         )}
                     </Field>
 
-
                     <Field<number> name="discount"
                                    initialValue={undefined}
-                                   validate={composeValidators(requiredValidator(), minMaxValidator(0, 1))}>
+                                   validate={composeValidators(requiredValidator(), minMaxValidator(0, 100))}>
                         {({ input }) => (
                             <InputNumber className={cnClientsPage('Input')}
                                          placeholder="Размер скидки"
                                          minFractionDigits={2}
                                          maxFractionDigits={2}
+                                         suffix=" %"
                                          value={input.value}
                                          onValueChange={input.onChange}
                                          onFocus={input.onFocus as unknown as (e: Event) => void}

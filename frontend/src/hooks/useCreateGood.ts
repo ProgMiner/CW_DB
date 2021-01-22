@@ -5,26 +5,14 @@ import { Good } from '../models/good';
 import { goodsApi } from '../api/goods';
 
 
-interface CreateGoodParams {
-    name: string;
-    price: number;
-    type: string;
-}
-
 export const useCreateGood = () => {
     const { dispatch } = useStore();
 
-    return useCallback(async ({ name, price, type }: CreateGoodParams) => {
-        console.log({ name, price, type });
+    return useCallback(async (good: Good) => {
+        const newGood = await goodsApi.createGood(good);
 
-        const good = await goodsApi.createGood({
-            name,
-            price,
-            type
-        });
+        dispatch(store => store.goods?.unshift(newGood));
 
-        dispatch(store => store.goods?.unshift(good));
-
-        return good;
+        return newGood;
     }, [dispatch]);
 };

@@ -5,25 +5,14 @@ import { Food } from '../models/food';
 import { foodApi } from '../api/food';
 
 
-interface CreateFoodParams {
-    name: string;
-    goodId?: number;
-}
-
 export const useCreateFood = () => {
     const { state: { goods }, dispatch } = useStore();
 
-    return useCallback(async ({ name, goodId }: CreateFoodParams) => {
-        console.log({ name, goodId });
+    return useCallback(async (food: Food) => {
+        const newFood = await foodApi.createFood(food);
 
-        const food = await foodApi.createFood({
-            name,
-            good: goods?.find(({ id }) => id === goodId),
-            allergens: []
-        });
+        dispatch(store => store.food?.unshift(newFood));
 
-        dispatch(store => store.food?.unshift(food));
-
-        return food;
+        return newFood;
     }, [goods, dispatch]);
 };

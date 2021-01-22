@@ -15,14 +15,7 @@ const cnClientsPage = cn('ClientsPage');
 export const ClientsPage: React.FC = () => (
     <Page className={cnClientsPage()} title="Клиенты">
         <MainLayout className={cnClientsPage('Layout')}>
-            <VerticalFormTablePanel
-                form={(
-                    <div className={cnClientsPage('FormContainer')}>
-                        <ClientForm />
-                    </div>
-                )}
-                table={<ClientsTable />}
-            />
+            <VerticalFormTablePanel form={<ClientForm />} table={<ClientsTable />} />
         </MainLayout>
     </Page>
 );
