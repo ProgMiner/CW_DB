@@ -6,7 +6,7 @@ import javax.persistence.*
 class Good(
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "good_id_seq")
     @SequenceGenerator(name = "good_id_seq", sequenceName = "good_id_seq", allocationSize = 1)
-    val id: Int?,
+    var id: Int?,
 
     val name: String,
 

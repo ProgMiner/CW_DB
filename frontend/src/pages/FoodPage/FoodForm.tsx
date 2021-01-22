@@ -59,7 +59,7 @@ export const FoodForm: React.FC = () => {
                             {({ input }) => (
                                 <Dropdown className={cnFoodPage('Input')}
                                           value={input.value} onChange={input.onChange}
-                                          placeholder="Ид_товара" showClear={input.value?.id === undefined} filter
+                                          placeholder="Ид_товара" showClear={input.value?.id !== undefined} filter
                                           options={goodsOptions} />
                             )}
                         </Field>

@@ -3,22 +3,22 @@ package ru.byprogminer.dbcw.service
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import ru.byprogminer.dbcw.entity.Good
-import ru.byprogminer.dbcw.repository.GoodRepository
+import ru.byprogminer.dbcw.entity.Food
+import ru.byprogminer.dbcw.repository.FoodRepository
 
 @Service
 @Transactional
-class GoodService(
-    private val repository: GoodRepository
+class FoodService(
+    private val repository: FoodRepository
 ) {
 
-    fun getGoods(): List<Good> = repository
+    fun getFoodList(): List<Food> = repository
         .findAll(Sort.by(Sort.Direction.DESC, "id"))
         .toList()
 
-    fun createGood(good: Good): Good {
-        good.id = null
+    fun createFood(food: Food): Food {
+        food.id = null
 
-        return repository.save(good)
+        return repository.save(food)
     }
 }

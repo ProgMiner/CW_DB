@@ -11,8 +11,7 @@ import { useFood } from '../../hooks/useFood';
 import { Food } from '../../models/food';
 
 
-
-const goodColumn = (food: Food) => food.good?.id || '-';
+const goodColumn = ({ good }: Food) => good ? `${good.name} (#${good?.id})` : 'нет';
 
 const cnFoodPage = cn('FoodPage');
 
@@ -26,9 +25,7 @@ export const FoodTable: React.FC = () => {
 
     const foodTree: TreeNode[] = food?.slice(first, first+10).map(food => ({ key: food.id, label: `${food.name} (${food.id})`, children: food.allergens.map(allergen => ({ key: allergen.id, label: `${allergen.name} (${allergen.id})`,  children:[] })) }))  ?? [];
 
-
     return (
-
         <TabView>
             <TabPanel header="Еда">
                 <DataTable value={food ?? []} scrollable scrollHeight="350px" className={cnFoodPage('Table', ['p-datatable-sm'])} paginator rows={10}>
@@ -47,6 +44,5 @@ export const FoodTable: React.FC = () => {
             </TabPanel>
 
         </TabView>
-
     );
 };
