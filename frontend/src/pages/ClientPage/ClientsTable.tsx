@@ -12,10 +12,10 @@ export const ClientsTable: React.FC = () => {
     const clients = useClients();
 
     return (
-        <DataTable value={clients ?? []} className={cnClientsPage('Table', ['p-datatable-sm'])}>
-            <Column field="id" header="#" />
+        <DataTable className={cnClientsPage('Table', ['p-datatable-sm'])} value={clients ?? []} paginator rows={10}>
+            <Column field="id" header="#" headerStyle={{ width: '100px' }} />
             <Column field="name" header="Название" />
-            <Column field="discount" header="Размер скидки" />
+            <Column field="discount" header="Размер скидки" headerStyle={{ width: '150px' }} />
         </DataTable>
     );
 };

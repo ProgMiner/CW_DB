@@ -12,10 +12,10 @@ export const BreedsTable: React.FC = () => {
     const breeds = useBreeds();
 
     return (
-        <DataTable value={breeds ?? []} className={cnBreedsPage('Table', ['p-datatable-sm'])}>
-            <Column field="id" header="#" />
+        <DataTable value={breeds ?? []} className={cnBreedsPage('Table', ['p-datatable-sm'])} paginator rows={10}>
+            <Column field="id" header="#" headerStyle={{ width: '100px' }} />
             <Column field="name" header="Название" />
-            <Column field="price" header="Стоимость" />
+            <Column field="price" header="Стоимость" headerStyle={{ width: '200px' }} />
         </DataTable>
     );
 };

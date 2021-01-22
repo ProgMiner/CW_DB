@@ -33,5 +33,5 @@ export const SexInput: React.FC<SexInputProps> = ({
                         icon={cnSexInput('Icon', { [sex.toLowerCase()]: true })} type="button" />
             ))}
         </div>
-    )
-}
+    );
+};

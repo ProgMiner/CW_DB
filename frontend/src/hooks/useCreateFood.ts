@@ -20,7 +20,7 @@ export const useCreateFood = () => {
             name,
             good: goods?.find(({ id }) => id === goodId),
             allergens: []
-        })
+        });
 
         dispatch(store => store.food?.unshift(food));
 

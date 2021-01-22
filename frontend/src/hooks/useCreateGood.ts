@@ -21,7 +21,7 @@ export const useCreateGood = () => {
             name,
             price,
             type
-        })
+        });
 
         dispatch(store => store.goods?.unshift(good));
 

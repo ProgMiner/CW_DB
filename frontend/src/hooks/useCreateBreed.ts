@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { useStore } from '../store';
-import { breedsApi } from '../api/breeds'
+import { breedsApi } from '../api/breeds';
 
 
 interface CreateBreedParams {
@@ -18,7 +18,7 @@ export const useCreateBreed = () => {
         const breed = await breedsApi.createBreed({
             name,
             price
-        })
+        });
 
         dispatch(store => store.breeds?.unshift(breed));
 

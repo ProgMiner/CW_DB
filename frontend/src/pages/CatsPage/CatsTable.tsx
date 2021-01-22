@@ -10,7 +10,7 @@ import { Cat } from '../../models/cat';
 const cnCatsPage = cn('CatsPage');
 
 const breedColumn = (cat: Cat) => cat.breed?.name ?? 'без породы';
-const birthdayColumn = (cat: Cat) => cat.birthday?.toLocaleDateString() ?? 'неизвестно'
+const birthdayColumn = (cat: Cat) => cat.birthday?.toLocaleDateString() ?? 'неизвестно';
 const sexColumn = (cat: Cat) => (
     <div className={cnCatsPage('SexIcon', { [cat.sex.toLowerCase()]: true })}/>
 );
@@ -24,7 +24,8 @@ export const CatsTable: React.FC = () => {
     const cats = useCats();
 
     return (
-        <DataTable className={cnCatsPage('Table', ['p-datatable-sm'])} value={cats ?? []} paginator rows={10}>
+        <DataTable className={cnCatsPage('Table', ['p-datatable-sm'])}
+                   value={cats ?? []} paginator rows={10}>
             <Column field="id" header="#" headerStyle={{ width: '50px' }} />
             <Column field="name" header="Имя" headerStyle={{ width: '150px' }} />
             <Column body={breedColumn} header="Порода" headerStyle={{ width: '150px' }} />

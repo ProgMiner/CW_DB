@@ -17,7 +17,7 @@ export const useCreateAllergen = () => {
 
         const allergen = await allergensApi.createAllergen({
             name
-        })
+        });
 
         dispatch(store => store.allergens?.unshift(allergen));
 
